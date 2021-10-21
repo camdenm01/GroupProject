@@ -2,29 +2,51 @@ package com.example.groupproject;
 
 import android.widget.TextView;
 
+/**
+ * this is the engine that will handle player input and all events in the game
+ */
 public class GameEngine {
+    //this is the board that will be played
     private Board playingBoard;
+    //this handles displaying the current gamestate to the screen
+    private EngineToUI uiControl;
+    //this is the movingTile that will hold the selected tile
     private MovingTile mTile;
+    //this is the userTiles that will generate new playerTiles
     private UserTiles table;
-    private TextView score;
-    private TextView highScore;
 
-    GameEngine()
+    /**
+     * @param textScore given to uiControl
+     * @param testHS given to uiControl
+     * @param nameBoard given to uiControl
+     * @param nameUserTile given to uiControl
+     * initializes all variables and sets up game
+     */
+    GameEngine(String textScore, String testHS, String nameBoard, String nameUserTile)
     {
 
     }
 
-    void gameLoop()
+    /**
+     * this holds the gameLoop that will handle everything that happens in the game
+     */
+    public void gameLoop()
     {
 
     }
 
-    void update()
+    /**
+     * this updates the game state accordingly
+     */
+    public void update()
     {
 
     }
 
-    void updateHighScore()
+    /**
+     * checks if previous highscore was beaten, if so store it in memory
+     */
+    public void updateHighScore()
     {
 
     }
