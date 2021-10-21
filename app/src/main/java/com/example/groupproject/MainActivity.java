@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_main);
+        setContentView(R.layout.activity_main);
 
         Button startGameButton = (Button) findViewById(R.id.game_start_button);
         Button settingsButton = (Button) findViewById(R.id.settings_button);
