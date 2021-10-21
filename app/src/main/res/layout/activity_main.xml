@@ -12,11 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Title"
-        android:textSize="100dp"
+        android:text="@string/game_title"
+        android:textSize="@dimen/text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/game_start_button"
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
-        android:text="Play"
+        android:text="@string/play_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text"/>
 
     <Button
         android:id="@+id/settings_button"
@@ -35,10 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
-        android:text="Settings"
+        android:text="@string/game_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_start_button" />
+        app:layout_constraintTop_toBottomOf="@+id/game_start_button"/>
 
     <Button
         android:id="@+id/credits_button"
@@ -46,8 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_weight="1"
-        android:text="Credits"
+        android:text="@string/team_member_credits"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
