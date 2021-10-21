@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/cjmga/AndroidStudioProjects/GroupProject/app/src/main/res/layout/activity_game.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/cjmga/AndroidStudioProjects/GroupProject/app/src/main/res/layout/layout_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/tardz/OneDrive - Northern Kentucky University/Semesters/Fall/Fall_2021/CSC 415-001/SourceCode/Java/GroupProject/GroupProjectGame/app/src/main/res/layout/activity_credits.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/tardz/OneDrive - Northern Kentucky University/Semesters/Fall/Fall_2021/CSC 415-001/SourceCode/Java/GroupProject/GroupProjectGame/app/src/main/res/layout/activity_game.xml" value="0.1" />
+        <entry key="..\:/Users/tardz/OneDrive - Northern Kentucky University/Semesters/Fall/Fall_2021/CSC 415-001/SourceCode/Java/GroupProject/GroupProjectGame/app/src/main/res/layout/activity_settings.xml" value="0.1585144927536232" />
+        <entry key="..\:/Users/tardz/OneDrive - Northern Kentucky University/Semesters/Fall/Fall_2021/CSC 415-001/SourceCode/Java/GroupProject/GroupProjectGame/app/src/main/res/layout/layout_main.xml" value="0.1585144927536232" />
       </map>
     </option>
   </component>
