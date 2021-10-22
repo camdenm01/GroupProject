@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">GroupProject</string>
+    <string name="app_name">Group Project</string>
+    <string name ="play_button">Play</string>
+    <string name ="game_settings">Settings</string>
+    <string name ="team_member_credits">Credits</string>
+    <string name ="game_title">Title</string>
+    <string name="sound_effects">Sound Effects</string>
+    <string name="game_music">Music</string>
 </resources>
