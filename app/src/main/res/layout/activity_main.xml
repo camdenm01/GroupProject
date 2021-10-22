@@ -22,7 +22,7 @@
         android:id="@+id/game_start_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
         android:text="@string/play_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/settings_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
         android:text="@string/game_settings"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,10 +44,11 @@
         android:id="@+id/credits_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
         android:text="@string/team_member_credits"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_button"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
