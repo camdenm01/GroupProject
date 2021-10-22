@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:switchMinWidth="60dp"
         android:text="@string/game_music"
-        android:textSize="30sp"
+        android:textSize="@dimen/switch_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="60dp"
         android:switchMinWidth="60dp"
         android:text="@string/sound_effects"
-        android:textSize="30sp"
+        android:textSize="@dimen/switch_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/music_switch" />
