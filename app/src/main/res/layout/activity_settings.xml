@@ -6,25 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/music_switch"
+    <SeekBar
+        android:id="@+id/volume_slider"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:switchMinWidth="60dp"
-        android:text="@string/game_music"
-        android:textSize="@dimen/switch_text_size"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_text" />
+
+    <TextView
+        android:id="@+id/settings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/sfx_switch"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:switchMinWidth="60dp"
-        android:text="@string/sound_effects"
-        android:textSize="@dimen/switch_text_size"
+    <TextView
+        android:id="@+id/volume_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Volume"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/music_switch" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_text" />
+
+    <TextView
+        android:id="@+id/difficulty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Difficulty"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_slider" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_easy"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#1532F3"
+        android:text="Easy"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficulty_text" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_medium"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#1532F3"
+        android:text="Medium"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_easy" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_hard"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#1532F3"
+        android:text="Hard"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_medium" />
 </androidx.constraintlayout.widget.ConstraintLayout>
