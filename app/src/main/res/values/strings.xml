@@ -6,4 +6,8 @@
     <string name ="game_title">Title</string>
     <string name="sound_effects">Sound Effects</string>
     <string name="game_music">Music</string>
+    <string name="default_tile">[---]</string>
+    <string name="default_score">Score: 0</string>
+    <string name="default_highScore">Highscore: 0</string>
+    <string name="userTile_name">Player Tiles:</string>
 </resources>

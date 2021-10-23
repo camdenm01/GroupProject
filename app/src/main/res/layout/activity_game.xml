@@ -6,4 +6,349 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/default_score"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/highScoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/default_highScore"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tileTxt10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+
+    <TextView
+        android:id="@+id/tileTxt11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt10"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+
+    <TextView
+        android:id="@+id/tileTxt12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt11"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+
+    <TextView
+        android:id="@+id/tileTxt13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt12"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+
+    <TextView
+        android:id="@+id/tileTxt14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt13"
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+
+    <TextView
+        android:id="@+id/tileTxt20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt10" />
+
+    <TextView
+        android:id="@+id/tileTxt21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt20"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt11" />
+
+    <TextView
+        android:id="@+id/tileTxt22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt21"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt12" />
+
+    <TextView
+        android:id="@+id/tileTxt23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt22"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt13" />
+
+    <TextView
+        android:id="@+id/tileTxt24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt23"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt14" />
+
+    <TextView
+        android:id="@+id/tileTxt30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt20" />
+
+    <TextView
+        android:id="@+id/tileTxt31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt30"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt21" />
+
+    <TextView
+        android:id="@+id/tileTxt32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt31"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt22" />
+
+    <TextView
+        android:id="@+id/tileTxt33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt32"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt23" />
+
+    <TextView
+        android:id="@+id/tileTxt34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt33"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt24" />
+
+    <Button
+        android:id="@+id/tileButton40"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:iconTint="#775555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt30" />
+
+    <Button
+        android:id="@+id/tileButton41"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton40"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt31" />
+
+    <Button
+        android:id="@+id/tileButton43"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton42"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt33" />
+
+    <Button
+        android:id="@+id/tileButton44"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton43"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt34" />
+
+    <Button
+        android:id="@+id/tileButton50"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton40" />
+
+    <Button
+        android:id="@+id/tileButton0"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <Button
+        android:id="@+id/tileButton1"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton0"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <Button
+        android:id="@+id/tileButton2"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton1"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <Button
+        android:id="@+id/tileButton3"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton2"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <Button
+        android:id="@+id/tileButton51"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton50"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton41" />
+
+    <Button
+        android:id="@+id/tileButton52"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton51"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton42" />
+
+    <Button
+        android:id="@+id/tileButton53"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton52"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton43" />
+
+    <Button
+        android:id="@+id/tileButton54"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton53"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton44" />
+
+    <Button
+        android:id="@+id/tileButton42"
+        android:layout_width="79dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/default_tile"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tileButton41"
+        app:layout_constraintTop_toBottomOf="@+id/tileTxt32" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/userTile_name"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton52" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
