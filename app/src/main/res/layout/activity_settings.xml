@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_page"
     tools:context=".SettingsActivity">
 
     <SeekBar
@@ -19,7 +20,10 @@
         android:id="@+id/settings_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/credits_bg1"
         android:text="Settings"
+        android:textColor="#000000"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Volume"
+        android:background="@color/credits_bg2"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="Difficulty"
+        android:background="@color/credits_bg3"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
