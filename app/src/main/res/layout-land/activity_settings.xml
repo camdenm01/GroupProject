@@ -9,10 +9,8 @@
 
     <SeekBar
         android:id="@+id/volume_slider"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volume_text" />
 
@@ -20,11 +18,11 @@
         android:id="@+id/settings_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:background="@color/credits_bg1"
         android:text="Settings"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,37 +31,38 @@
         android:id="@+id/volume_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Volume"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="36dp"
         android:background="@color/credits_bg2"
+        android:text="Volume"
         android:textColor="#000000"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_text" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/difficulty_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Difficulty"
         android:background="@color/credits_bg3"
+        android:text="Difficulty"
         android:textColor="#000000"
-        android:textSize="15sp"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/volume_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volume_slider" />
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toEndOf="@+id/volume_text" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_easy"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:background="#1532F3"
         android:text="Easy"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty_text" />
 
@@ -71,11 +70,12 @@
         android:id="@+id/button_medium"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:background="#1532F3"
         android:text="Medium"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_easy" />
 
@@ -83,11 +83,12 @@
         android:id="@+id/button_hard"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:background="#1532F3"
         android:text="Hard"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_medium" />
 </androidx.constraintlayout.widget.ConstraintLayout>
