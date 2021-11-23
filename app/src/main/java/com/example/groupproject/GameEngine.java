@@ -26,6 +26,8 @@ public class GameEngine {
     private boolean isGameOver;
 
     //UI Stuff
+    //this is the context the ui is done in
+    Activity context;
     //score and highScore are the textviews that will show what the variable name suggests
     private TextView scoreTxt, highScoreTxt;
     //this holds what will be drawn onto the tiles that the player can't interact with (top 3 rows)
@@ -56,6 +58,8 @@ public class GameEngine {
         //get score and highscore textview
         scoreTxt = textScore;
         highScoreTxt = textHS;
+        //set up context
+        context = activity;
 
         //set up the arrays to hold the textViews and buttons
         textTiles = new TextView[5][5];
@@ -88,7 +92,7 @@ public class GameEngine {
         //we'll iterate through userTiles and set up all the Buttons
         for (int x = 0; x < 5; x++)
         {
-                String textID = buttonNameBoard + String.valueOf(x);
+                String textID = nameUserTile + String.valueOf(x);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
                 userTiles[x] = (Button) activity.findViewById(resourceID);
                 //TO DO: set up onClickListener
@@ -100,20 +104,28 @@ public class GameEngine {
      */
     public void gameLoop()
     {
+        //this will hold the time since last frame so we know when we need to update the baord
         long lastFrame = System.currentTimeMillis();
+        //while the game isn't over
         while (!isGameOver)
         {
+            //if it's time to update the board, we do
             if (System.currentTimeMillis() - lastFrame >= 1000)
             {
-                //have the board update itself
+                //have the board update itself and check if the game is over
                 isGameOver = playingBoard.move();
                 //make new tiles
                 table.generateTile();
-                //update the ui
-                drawBoard();
-                drawUserTile();
-                drawMovingTile();
-                drawScore();
+                //update the ui, we'll tell it to update the ui in the ui thread
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        drawBoard();
+                        drawUserTile();
+                        drawMovingTile();
+                        drawScore();
+                    }
+                });
                 //update time since last frame
                 lastFrame = System.currentTimeMillis();
             }
