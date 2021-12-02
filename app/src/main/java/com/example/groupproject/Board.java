@@ -22,9 +22,9 @@ public class Board {
     Board()
     {
         board = new int[7][5];
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x < 7; x++)
         {
-            for (int y = 0; y < 7; y++)
+            for (int y = 0; y < 5; y++)
             {
                 board[x][y] = -1;
             }
@@ -51,7 +51,7 @@ public class Board {
         Random rand = new Random();
         for (int x = 0; x < 5; x++)
         {
-            if (rand.nextInt(3) == 0)
+            if (rand.nextInt(2) == 0)
             {
                 board[0][x] = 0;
             }
@@ -78,6 +78,12 @@ public class Board {
                     board[x - 1][y] = -1;
                 }
             }
+        }
+
+        //now we'll clear the upper row
+        for (int x = 0; x < 5; x++)
+        {
+            board[0][x] = -1;
         }
 
         //since we're here, we haven't lost

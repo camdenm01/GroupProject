@@ -26,6 +26,8 @@ public class UserTiles {
         {
             storedTiles[x] = -1;
         }
+        Random rand = new Random();
+        storedTiles[0] = rand.nextInt(5) + 1;
         //set up timeLastGen
         timeLastGen = 0;
     }
@@ -42,7 +44,7 @@ public class UserTiles {
         for (int x = 0; x < 4; x++)
         {
             //...looking for an empty tile...
-            if (storedTiles[x] == -1)
+            if (storedTiles[x] == -1 && emptyTile == -1)
             {
                 //...if we found one, we'll store the index
                 emptyTile = x;
@@ -55,7 +57,7 @@ public class UserTiles {
             //we'll need to generate a random tile
             Random rand = new Random();
             //if it's been too long since last time we generated a tile...
-            if (timeLastGen == 2)
+            if (timeLastGen == 1)
             {
                 //...then we'll generate a tile without randomizing it
                 storedTiles[emptyTile] = rand.nextInt(5) + 1;
@@ -64,7 +66,7 @@ public class UserTiles {
             }
             //else we'll randomly determine if we should generate a tile
             //the longer it's been since last gen, the more often we'll make a tile
-            else if (rand.nextInt(2 - timeLastGen) == 0)
+            else if (rand.nextInt(1 - timeLastGen) == 0)
             {
                 storedTiles[emptyTile] = rand.nextInt(5) + 1;
                 //since we just made a tile, timeLastGen = 0
