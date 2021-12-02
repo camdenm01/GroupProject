@@ -19,12 +19,13 @@ public class MovingTile {
     }
 
     /**
-     * @param tileType the tile the movingTile should represent
+     * @param inputTile the tile the movingTile should represent
      * this will set the movingTile as active and give it a tileType
      */
-    public void setActive(int tileType)
+    public void setActive(int inputTile)
     {
-
+        tileType = inputTile;
+        active = true;
     }
 
     /**
@@ -34,7 +35,8 @@ public class MovingTile {
      */
     public int release()
     {
-        return -1;
+        active = false;
+        return tileType;
     }
 
     /**

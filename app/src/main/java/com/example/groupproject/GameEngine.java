@@ -1,6 +1,7 @@
 package com.example.groupproject;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -85,7 +86,17 @@ public class GameEngine {
                 String textID = buttonNameBoard + String.valueOf(x + 4) + String.valueOf(y);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
                 playerSpaces[x][y] = (Button) activity.findViewById(resourceID);
-                //TO DO: set up onClickListener
+                //when the button is clicked we should change the text of the button if mTile is active
+                playerSpaces[x][y].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mTile.isActive())
+                        {
+                            Button b = (Button) view;
+                            b.setText(String.valueOf(mTile.release()));
+                        }
+                    }
+                });
             }
         }
 
@@ -96,6 +107,21 @@ public class GameEngine {
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
                 userTiles[x] = (Button) activity.findViewById(resourceID);
                 //TO DO: set up onClickListener
+                userTiles[x].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        //we'll need the view id to get the index of the button in the list in table
+                        String viewID = view.getResources().getResourceName(view.getId());
+                        //from the id, we'll get the index
+                        int tableIndex = Character.getNumericValue(viewID.charAt(viewID.length() - 1));
+                        //if the button doesn't have an empty tile, then we'll select it and put it in movingTile
+                        if (table.getTile(tableIndex) != -1)
+                        {
+                            mTile.setActive(table.selectTile(tableIndex));
+                        }
+                    }
+                });
         }
     }
 
