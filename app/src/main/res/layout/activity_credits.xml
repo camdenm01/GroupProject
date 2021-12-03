@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/main_page"
+    android:background="@drawable/parchment"
     tools:context=".CreditsActivity">
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="70dp"
         android:layout_marginRight="15dp"
+        android:fontFamily="@font/suez_one"
         android:gravity="center_horizontal"
         android:text="Credits"
-        android:background="@color/credits_bg1"
         android:textColor="#000000"
         android:textSize="60sp"
         android:textStyle="bold" />
@@ -31,10 +31,9 @@
         android:layout_marginRight="15dp"
         android:gravity="center_horizontal"
         android:text="Jacob Kessinger"
-        android:background="@color/credits_bg2"
         android:textColor="#000000"
         android:textSize="34sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView7"
@@ -45,10 +44,9 @@
         android:layout_marginRight="15dp"
         android:gravity="center_horizontal"
         android:text="Camden Morgan"
-        android:background="@color/credits_bg3"
         android:textColor="#000000"
         android:textSize="34sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView8"
@@ -59,10 +57,9 @@
         android:layout_marginRight="15dp"
         android:gravity="center_horizontal"
         android:text="Godwin Bime"
-        android:background="@color/credits_bg4"
         android:textColor="#000000"
         android:textSize="34sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView9"
@@ -73,10 +70,9 @@
         android:layout_marginRight="15dp"
         android:gravity="center_horizontal"
         android:text="Mangsa Limbu Pheudin"
-        android:background="@color/credits_bg5"
         android:textColor="#000000"
         android:textSize="34sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView10"
@@ -87,8 +83,7 @@
         android:layout_marginRight="15dp"
         android:gravity="center_horizontal"
         android:text="Timothy Haag"
-        android:background="@color/credits_bg6"
         android:textColor="#000000"
         android:textSize="34sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 </LinearLayout>
