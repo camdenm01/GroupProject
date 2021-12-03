@@ -2,6 +2,7 @@ package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import java.util.concurrent.Executors;
@@ -21,7 +22,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         //set up game and run
-        EngineToUI runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt));
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        String selectedDifficulty = sharedPreferences.getString("difficulty", "");
+        EngineToUI runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
         Thread thread = new Thread(runGame);
         thread.start();
     }
