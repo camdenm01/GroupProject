@@ -1,6 +1,8 @@
 package com.example.groupproject;
 
 import android.app.Activity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -62,12 +64,12 @@ public class GameEngine {
         context = activity;
 
         //set up the arrays to hold the textViews and buttons
-        textTiles = new TextView[5][5];
+        textTiles = new TextView[3][5];
         playerSpaces = new Button[2][5];
         userTiles = new Button[4];
 
         //we'll iterate through textTiles and set up all the textValue
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x < 3; x++)
         {
             for (int y = 0; y < 5; y++)
             {
@@ -85,18 +87,71 @@ public class GameEngine {
                 String textID = buttonNameBoard + String.valueOf(x + 4) + String.valueOf(y);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
                 playerSpaces[x][y] = (Button) activity.findViewById(resourceID);
-                //TO DO: set up onClickListener
+                //when the button is clicked we should change the text of the button if mTile is active
+                playerSpaces[x][y].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mTile.isActive())
+                        {
+                            //we'll need the view id to get the indexes of the button
+                            String viewID = view.getResources().getResourceName(view.getId());
+                            //from the id, we'll get the indexes
+                            int bIndex1 = Character.getNumericValue(viewID.charAt(viewID.length() - 2));
+                            int bIndex2 = Character.getNumericValue(viewID.charAt(viewID.length() - 1));
+                            //then add the tile to board
+                            playingBoard.addTile(bIndex1, bIndex2, mTile.release());
+                            //since it changed, we'll redraw board
+                            context.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    drawBoard();
+                                }
+                            });
+                        }
+                    }
+                });
             }
         }
 
         //we'll iterate through userTiles and set up all the Buttons
-        for (int x = 0; x < 5; x++)
+        for (int x = 0; x < 4; x++)
         {
                 String textID = nameUserTile + String.valueOf(x);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
                 userTiles[x] = (Button) activity.findViewById(resourceID);
                 //TO DO: set up onClickListener
+                userTiles[x].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view)
+                    {
+                        //we'll need the view id to get the index of the button in the list in table
+                        String viewID = view.getResources().getResourceName(view.getId());
+                        //from the id, we'll get the index
+                        int tableIndex = Character.getNumericValue(viewID.charAt(viewID.length() - 1));
+                        //if the button doesn't have an empty tile, then we'll select it and put it in movingTile
+                        if (table.getTile(tableIndex) != -1)
+                        {
+                            mTile.setActive(table.selectTile(tableIndex));
+                        }
+
+                        //we'll need to drawUserTile because it changed
+                        context.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                drawUserTile();
+                            }
+                        });
+                    }
+                });
         }
+
+        //we'll need to drawUserTile because the tiles will have starting values
+        context.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                drawUserTile();
+            }
+        });
     }
 
     /**
@@ -110,8 +165,9 @@ public class GameEngine {
         while (!isGameOver)
         {
             //if it's time to update the board, we do
-            if (System.currentTimeMillis() - lastFrame >= 1000)
+            if (System.currentTimeMillis() - lastFrame >= 3000)
             {
+                Log.v("IN LOOP", "looping");
                 //have the board update itself and check if the game is over
                 isGameOver = playingBoard.move();
                 //make new tiles

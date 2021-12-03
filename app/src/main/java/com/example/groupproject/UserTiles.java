@@ -1,5 +1,7 @@
 package com.example.groupproject;
 
+import java.util.Random;
+
 /**
  * this will store the playerTiles that the user can select and put on the board
  */
@@ -18,7 +20,16 @@ public class UserTiles {
      */
     UserTiles()
     {
-
+        //created the array storedTiles and fill it with empty tiles
+        storedTiles = new int[4];
+        for (int x = 0; x < 4; x++)
+        {
+            storedTiles[x] = -1;
+        }
+        Random rand = new Random();
+        storedTiles[0] = rand.nextInt(5) + 1;
+        //set up timeLastGen
+        timeLastGen = 0;
     }
 
     /**
@@ -27,7 +38,46 @@ public class UserTiles {
      */
     public void generateTile()
     {
-
+        //we'll need to store the index of an empty tile if there is any
+        int emptyTile = -1;
+        //we'll go through the array...
+        for (int x = 0; x < 4; x++)
+        {
+            //...looking for an empty tile...
+            if (storedTiles[x] == -1 && emptyTile == -1)
+            {
+                //...if we found one, we'll store the index
+                emptyTile = x;
+            }
+        }
+        //if we found an empty tile...
+        if (emptyTile != -1)
+        {
+            //...then we'll see if we'll generate an empty tile
+            //we'll need to generate a random tile
+            Random rand = new Random();
+            //if it's been too long since last time we generated a tile...
+            if (timeLastGen == 1)
+            {
+                //...then we'll generate a tile without randomizing it
+                storedTiles[emptyTile] = rand.nextInt(5) + 1;
+                //since we just made a tile, timeLastGen = 0
+                timeLastGen = 0;
+            }
+            //else we'll randomly determine if we should generate a tile
+            //the longer it's been since last gen, the more often we'll make a tile
+            else if (rand.nextInt(1 - timeLastGen) == 0)
+            {
+                storedTiles[emptyTile] = rand.nextInt(5) + 1;
+                //since we just made a tile, timeLastGen = 0
+                timeLastGen = 0;
+            }
+            //if we didn't make a tile, we'll increment timeLastGen
+            else
+            {
+                timeLastGen++;
+            }
+        }
     }
 
     /**
@@ -37,7 +87,9 @@ public class UserTiles {
      */
     public int selectTile(int selectedIndex)
     {
-        return -1;
+        int tileType = storedTiles[selectedIndex];
+        storedTiles[selectedIndex] = -1;
+        return tileType;
     }
 
     /**
@@ -47,7 +99,7 @@ public class UserTiles {
      */
     public int getTile(int selectedIndex)
     {
-        return -1;
+        return storedTiles[selectedIndex];
     }
 
     /**
