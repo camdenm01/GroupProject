@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_page"
+    android:background="@drawable/castle2"
     tools:context=".MainActivity">
 
 
@@ -12,7 +12,12 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/press_start_2p"
+        android:shadowColor="#555555"
+        android:shadowDx="10.0"
+        android:shadowDy="2.0"
+        android:shadowRadius="5.0"
         android:text="@string/game_title"
         android:textColor="#000000"
         android:textSize="@dimen/text_size"
@@ -26,10 +31,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
+        android:backgroundTint="#8114FF"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
         android:text="@string/play_button"
+        app:cornerRadius="@dimen/button_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_text" />
+        app:layout_constraintTop_toBottomOf="@+id/title_text"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1sp" />
 
     <Button
         android:id="@+id/settings_button"
@@ -37,10 +51,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
+        android:backgroundTint="#8114FF"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
         android:text="@string/game_settings"
+        app:cornerRadius="@dimen/button_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_start_button" />
+        app:layout_constraintTop_toBottomOf="@+id/game_start_button"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1sp" />
 
     <Button
         android:id="@+id/credits_button"
@@ -48,9 +71,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/button_margin"
         android:layout_weight="1"
+        android:backgroundTint="#8114FF"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
         android:text="@string/team_member_credits"
+        app:cornerRadius="@dimen/button_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_button" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

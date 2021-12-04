@@ -64,8 +64,8 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 easyButton.setBackgroundColor(Color.parseColor("#000000"));
-                mediumButton.setBackgroundColor(Color.parseColor("#1532F3"));
-                hardButton.setBackgroundColor(Color.parseColor("#1532F3"));
+                mediumButton.setBackgroundColor(Color.parseColor("#7C7069"));
+                hardButton.setBackgroundColor(Color.parseColor("#7C7069"));
 
                 editor.putString("difficulty", "easy");
                 editor.apply();
@@ -75,9 +75,9 @@ public class SettingsActivity extends AppCompatActivity {
         mediumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                easyButton.setBackgroundColor(Color.parseColor("#1532F3"));
+                easyButton.setBackgroundColor(Color.parseColor("#7C7069"));
                 mediumButton.setBackgroundColor(Color.parseColor("#000000"));
-                hardButton.setBackgroundColor(Color.parseColor("#1532F3"));
+                hardButton.setBackgroundColor(Color.parseColor("#7C7069"));
 
                 editor.putString("difficulty", "medium");
                 editor.apply();
@@ -87,8 +87,8 @@ public class SettingsActivity extends AppCompatActivity {
         hardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                easyButton.setBackgroundColor(Color.parseColor("#1532F3"));
-                mediumButton.setBackgroundColor(Color.parseColor("#1532F3"));
+                easyButton.setBackgroundColor(Color.parseColor("#7C7069"));
+                mediumButton.setBackgroundColor(Color.parseColor("#7C7069"));
                 hardButton.setBackgroundColor(Color.parseColor("#000000"));
 
                 editor.putString("difficulty", "hard");

@@ -1,6 +1,9 @@
 package com.example.groupproject;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +19,8 @@ import org.w3c.dom.Text;
  */
 public class GameEngine {
     //Game Functionality
-    //this holds the score and highscore
-    private int score, highScore;
+    //this holds the high score; timeToWait is how long we should wait until moving the tiles down
+    private int highScore, timeToWait;
     //this is the board that will be played
     private Board playingBoard;
     //this is the movingTile that will hold the selected tile
@@ -47,14 +50,29 @@ public class GameEngine {
      * @param nameUserTile the string before the number in the id of each button in user tiles
      * initializes all variables and sets up game
      */
-    GameEngine(Activity activity, TextView textScore, TextView textHS, String txtNameBoard, String buttonNameBoard, String nameUserTile)
+    GameEngine(Activity activity, TextView textScore, TextView textHS, String txtNameBoard, String buttonNameBoard, String nameUserTile, String storedData)
     {
-        score = 0;
-        //TO DO: store High Score and get it from a file, 0 is a stub rn
-        highScore = 0;
+        //we'll created a selected difficulty int to give GameEngine
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(storedData, MODE_PRIVATE);
+        String selectedDifficulty = sharedPreferences.getString("difficulty", "");
+        int selD;
+        //we'll find the corresponding number
+        switch (selectedDifficulty)
+        {
+            case "easy":
+                selD = 1;
+                break;
+            case "hard":
+                selD = 3;
+                break;
+            default:
+                selD = 2;
+                break;
+        }
+        int hScore = sharedPreferences.getInt("highScore", 0);
         isGameOver = false;
         //set up custom classes
-        playingBoard = new Board();
+        playingBoard = new Board(selD);
         mTile = new MovingTile();
         table = new UserTiles();
         //get score and highscore textview
@@ -62,6 +80,19 @@ public class GameEngine {
         highScoreTxt = textHS;
         //set up context
         context = activity;
+        //set up how long we should wait
+        switch (selD)
+        {
+            case 1:
+                timeToWait = 5000;
+                break;
+            case 2:
+                timeToWait = 3000;
+                break;
+            case 3:
+                timeToWait = 1000;
+                break;
+        }
 
         //set up the arrays to hold the textViews and buttons
         textTiles = new TextView[3][5];
@@ -91,22 +122,26 @@ public class GameEngine {
                 playerSpaces[x][y].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (mTile.isActive())
-                        {
+                        if (mTile.isActive()) {
                             //we'll need the view id to get the indexes of the button
                             String viewID = view.getResources().getResourceName(view.getId());
                             //from the id, we'll get the indexes
                             int bIndex1 = Character.getNumericValue(viewID.charAt(viewID.length() - 2));
                             int bIndex2 = Character.getNumericValue(viewID.charAt(viewID.length() - 1));
-                            //then add the tile to board
-                            playingBoard.addTile(bIndex1, bIndex2, mTile.release());
-                            //since it changed, we'll redraw board
-                            context.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    drawBoard();
-                                }
-                            });
+                            //if the tile isn't already occupied, then add it
+                            if (playingBoard.getTile(bIndex1, bIndex2) < 1)
+                            {
+                                //then add the tile to board
+                                playingBoard.addTile(bIndex1, bIndex2, mTile.release());
+                                //since it changed, we'll redraw board and update score
+                                context.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        drawBoard();
+                                        drawScore();
+                                    }
+                                });
+                            }
                         }
                     }
                 });
@@ -165,7 +200,7 @@ public class GameEngine {
         while (!isGameOver)
         {
             //if it's time to update the board, we do
-            if (System.currentTimeMillis() - lastFrame >= 3000)
+            if (System.currentTimeMillis() - lastFrame >= timeToWait)
             {
                 Log.v("IN LOOP", "looping");
                 //have the board update itself and check if the game is over
@@ -186,6 +221,8 @@ public class GameEngine {
                 lastFrame = System.currentTimeMillis();
             }
         }
+        //at the end of the game, we'll update high score
+        updateHighScore();
     }
 
     /**
@@ -193,7 +230,9 @@ public class GameEngine {
      */
     public void updateHighScore()
     {
-
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("highScore", highScore);
     }
 
     /**
@@ -316,8 +355,9 @@ public class GameEngine {
      */
     public void drawScore()
     {
-        scoreTxt.setText("Score: " + String.valueOf(score));
-        if (score > highScore)
-            highScoreTxt.setText("Highscore: " + String.valueOf(score));
+        int curScore = playingBoard.getScore();
+        scoreTxt.setText("Score: " + String.valueOf( curScore ));
+        if (curScore > highScore)
+            highScoreTxt.setText("Highscore: " + String.valueOf(curScore));
     }
 }

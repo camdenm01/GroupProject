@@ -1,5 +1,7 @@
 package com.example.groupproject;
 
+import android.util.Log;
+
 import java.util.Random;
 
 /**
@@ -11,15 +13,17 @@ public class Board {
      * 0, 0 is the top left
      * possible tiles are:
      * -1 = empty, 0 = enemy
-     * 1 = sword, 2 = great-sword, 3 = wave, 4 = bishop, 5 = bomb
+     * 1 = sword, 2 = great-sword, 3 = twin-axes, 4 = bishop, 5 = bomb
      * see CSC415_groupProject for what each player does upon activation
      */
     private int[][] board;
+    //curNumEnemy = number of enemies on the board; totalNumEnemy = number of enemy tiles generated; difficulty = diffculty selected in setting
+    private int curNumEnemy, totalNumEnemy, difficulty;
 
     /**
      * this initializes board and sets all the tiles to be empty
      */
-    Board()
+    Board(int inputD)
     {
         board = new int[7][5];
         for (int x = 0; x < 7; x++)
@@ -29,6 +33,9 @@ public class Board {
                 board[x][y] = -1;
             }
         }
+        curNumEnemy = 0;
+        totalNumEnemy = 0;
+        difficulty = inputD;
     }
 
     /**
@@ -51,9 +58,11 @@ public class Board {
         Random rand = new Random();
         for (int x = 0; x < 5; x++)
         {
+            //1/2 tiles will be enemy tiles
             if (rand.nextInt(2) == 0)
             {
                 board[0][x] = 0;
+                totalNumEnemy++;
             }
         }
 
@@ -66,7 +75,7 @@ public class Board {
                 if (board[x][y] > 0 && board[x - 1][y] == 0)
                 {
                     //we call collide
-                    collide(x, y, board[x][y]);
+                    collide(x, y, board[x][y], 1);
                 }
 
                 //if we need to move an enemy tile down, we do
@@ -78,12 +87,6 @@ public class Board {
                     board[x - 1][y] = -1;
                 }
             }
-        }
-
-        //now we'll clear the upper row
-        for (int x = 0; x < 5; x++)
-        {
-            board[0][x] = -1;
         }
 
         //since we're here, we haven't lost
@@ -98,19 +101,19 @@ public class Board {
      * see CSC415_groupProject for different file effects
      * after effects, tile at xPos, yPos should be empty
      */
-    public void collide(int xPos, int yPos, int curTile)
+    public void collide(int xPos, int yPos, int curTile, int xPosMod)
     {
         //empty both tiles
         board[xPos][yPos] = -1;
-        board[xPos - 1][yPos] = -1;
+        board[xPos - xPosMod][yPos] = -1;
 
         //now we have a different effect for each player tile
         switch (curTile)
         {
             case 1:
                 //as a sword, empty two tiles
-                board[xPos - 2][yPos] = -1;
-                board[xPos - 3][yPos] = -1;
+                board[xPos - 1 - xPosMod][yPos] = -1;
+                board[xPos - 2 - xPosMod][yPos] = -1;
                 break;
             case 2:
                 //as a great-sword, eliminate all tiles in a vertical role
@@ -120,49 +123,50 @@ public class Board {
                 }
                 break;
             case 3:
-                //as a wave, eliminate all tile in a cone
+                //as twin-axes, eliminate all tile in two lines offset from center
                 if (yPos > 0)
                 {
-                    board[xPos - 2][yPos - 1] = -1;
-                    board[xPos - 1][yPos - 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 2 - xPosMod][yPos - 1] = -1;
                 }
-                if (yPos < 5)
+                if (yPos < 4)
                 {
-                    board[xPos - 2][yPos + 1] = -1;
-                    board[xPos - 1][yPos + 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 2 - xPosMod][yPos + 1] = -1;
                 }
-                board[xPos - 2][yPos + 1] = -1;
+
                 break;
             case 4:
-                //bishop, destroy diagonal tiles
+                //twin daggers, destroy one tile ahead and diagonal tiles (cone
+                board[xPos - 1 - xPosMod][yPos] = -1;
                 if (yPos > 0)
                 {
-                    board[xPos - 2][yPos - 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
                 }
-                if (yPos < 5)
+                if (yPos < 4)
                 {
-                    board[xPos - 2][yPos + 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
                 }
                 break;
             case 5:
                 //as a bomb, destroy all surrounding tiles
                 if (yPos > 0)
                 {
-                    board[xPos - 2][yPos - 1] = -1;
-                    board[xPos - 1][yPos - 1] = -1;
-                    board[xPos][yPos - 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - xPosMod][yPos - 1] = -1;
+                    board[xPos + 1 - xPosMod][yPos - 1] = -1;
                 }
-                if (yPos < 5)
+                if (yPos < 4)
                 {
-                    board[xPos - 2][yPos + 1] = -1;
-                    board[xPos - 1][yPos + 1] = -1;
-                    board[xPos][yPos + 1] = -1;
+                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - xPosMod][yPos + 1] = -1;
+                    board[xPos + 1 - xPosMod][yPos + 1] = -1;
                 }
                 if (xPos < 6)
                 {
-                    board[xPos + 1][yPos] = -1;
+                    board[xPos + 2 - xPosMod][yPos] = -1;
                 }
-                board[xPos - 2][yPos] = -1;
+                board[xPos - 1 - xPosMod][yPos] = -1;
                 break;
         }
     }
@@ -171,26 +175,20 @@ public class Board {
      * @param xPos x position of tile to be added
      * @param yPos y position of tile to be added
      * @param tileType the number of the tile to be added
-     * @return true if the tile is occupied by a playerTile, false otherwise
      * this checks if the tile at x, y is occupied, if it is by a player tile, return false
      * if it is occupied by an enemy tile, call collide
      * if the tile is empty, simply set the tile to be the given tileType
      */
-    public boolean addTile(int xPos, int yPos, int tileType)
+    public void addTile(int xPos, int yPos, int tileType)
     {
-        if (board[xPos][yPos] > 0)
+        if (board[xPos][yPos] == 0)
         {
-            return true;
-        }
-        else if (board[xPos][yPos] == 0)
-        {
-            collide(xPos, yPos, tileType);
+            collide(xPos, yPos, tileType, 0);
         }
         else
         {
             board[xPos][yPos] = tileType;
         }
-        return false;
     }
 
     /**
@@ -201,5 +199,27 @@ public class Board {
     public int getTile(int xPos, int yPos)
     {
         return board[xPos][yPos];
+    }
+
+    /**
+     * @return score which is the difficulty * number of enemies destroyed
+     */
+    public int getScore()
+    {
+        //now we'll count how many enemy tiles there were and make the score based on that
+        curNumEnemy = 0;
+        for (int x = 0; x < 7; x++)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                if (board[x][y] == 0)
+                {
+                    curNumEnemy++;
+                }
+            }
+        }
+
+        //return the score
+        return difficulty * (totalNumEnemy - curNumEnemy);
     }
 }
