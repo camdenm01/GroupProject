@@ -227,7 +227,7 @@ public class GameEngine {
         }
         //at the end of the game, we'll update high score
         updateHighScore();
-        ((GameActivity) context).displayGameOver();
+        ((GameActivity) context).displayGameOver(playingBoard.getScore(), highScore);
     }
 
     /**

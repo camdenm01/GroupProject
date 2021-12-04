@@ -1,6 +1,8 @@
 package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,5 +39,13 @@ public class GameActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST);
+    }
+
+    protected void displayGameOver(int currentScore, int highScore){
+        Fragment gameOverFragment = new GameOverFragment(currentScore, highScore);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.game_over_fragment_container, gameOverFragment);
+        transaction.commit();
+
     }
 }
