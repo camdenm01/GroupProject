@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import org.w3c.dom.Text;
 
 /**
@@ -28,7 +32,7 @@ public class GameEngine {
     //this is the userTiles that will generate new playerTiles
     private UserTiles table;
     //this designates whether or not the game is over
-    private boolean isGameOver;
+    public boolean isGameOver;
 
     //UI Stuff
     //this is the context the ui is done in
@@ -223,6 +227,7 @@ public class GameEngine {
         }
         //at the end of the game, we'll update high score
         updateHighScore();
+        ((GameActivity) context).displayGameOver();
     }
 
     /**

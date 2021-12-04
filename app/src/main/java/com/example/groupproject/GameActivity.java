@@ -1,9 +1,12 @@
 package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -27,5 +30,15 @@ public class GameActivity extends AppCompatActivity {
         EngineToUI runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
         Thread thread = new Thread(runGame);
         thread.start();
+
     }
+    protected void displayGameOver(){
+            Fragment gameOverFragment = new GameOverFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.game_over_fragment_container, gameOverFragment);
+            transaction.commit();
+
+    }
+
+
 }
