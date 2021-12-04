@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
  */
 public class GameEngine {
     //Game Functionality
-    //this holds the highscore; timeToWait is how long we should wait until moving the tiles down
+    //this holds the high score; timeToWait is how long we should wait until moving the tiles down
     private int highScore, timeToWait;
     //this is the board that will be played
     private Board playingBoard;
@@ -360,9 +360,10 @@ public class GameEngine {
      */
     public void drawScore()
     {
+
         int curScore = playingBoard.getScore();
         scoreTxt.setText("Score: " + String.valueOf( curScore ));
         if (curScore > highScore)
-            highScoreTxt.setText("Highscore: " + String.valueOf(curScore));
+            highScoreTxt.setText("HighScore: " + String.valueOf(curScore));
     }
 }

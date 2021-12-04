@@ -1,12 +1,11 @@
 package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideTitleBar();
         setContentView(R.layout.activity_game);
     }
 
@@ -30,15 +30,12 @@ public class GameActivity extends AppCompatActivity {
         EngineToUI runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
         Thread thread = new Thread(runGame);
         thread.start();
-
-    }
-    protected void displayGameOver(){
-            Fragment gameOverFragment = new GameOverFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.game_over_fragment_container, gameOverFragment);
-            transaction.commit();
-
     }
 
-
+    /**hides the title bar when the user is playing the game**/
+    private void hideTitleBar(){
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST);
+    }
 }

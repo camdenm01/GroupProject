@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size">50dp</dimen>
+    <dimen name="text_size">40dp</dimen>
+    <dimen name="tablet_text_size">70dp</dimen>
     <dimen name="regular_text_size">75dp</dimen>
-    <dimen name="button_margin">70dp</dimen>
+    <dimen name="button_margin">27dp</dimen>
+    <dimen name="tile_start_margin">23sp</dimen>
     <dimen name="switch_text_size">30sp</dimen>
+    <dimen name="left_margin_size">10sp</dimen>
+    <dimen name="top_margin">05dp</dimen>
+    <dimen name="difficulty_dimen">120sp</dimen>
+    <dimen name="difficulty_button">-900dp</dimen>
 </resources>
