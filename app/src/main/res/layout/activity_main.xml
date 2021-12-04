@@ -12,7 +12,7 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/press_start_2p"
         android:shadowColor="#555555"
         android:shadowDx="10.0"

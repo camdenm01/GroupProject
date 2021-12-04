@@ -355,9 +355,10 @@ public class GameEngine {
      */
     public void drawScore()
     {
+
         int curScore = playingBoard.getScore();
         scoreTxt.setText("Score: " + String.valueOf( curScore ));
         if (curScore > highScore)
-            highScoreTxt.setText("Highscore: " + String.valueOf(curScore));
+            highScoreTxt.setText("HighScore: " + String.valueOf(curScore));
     }
 }

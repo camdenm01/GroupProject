@@ -11,6 +11,7 @@
         android:theme="@style/Theme.GroupProject">
         <activity
             android:name=".MainActivity"
+            android:label="@string/game_title"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,12 +20,15 @@
         </activity>
         <activity
             android:name=".CreditsActivity"
+            android:label="Credits"
             android:exported="true" />
         <activity
             android:name=".SettingsActivity"
+            android:label="Settings"
             android:exported="true" />
         <activity
             android:name=".GameActivity"
+            android:label="@string/game_title"
             android:exported="true" />
 
         <meta-data
