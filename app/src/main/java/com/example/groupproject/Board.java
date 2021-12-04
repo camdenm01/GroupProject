@@ -44,16 +44,6 @@ public class Board {
      * @return true if the player lost, false otherwise
      */
     public boolean move() {
-        //we'll check if the player loses
-        for (int x = 0; x < 5; x++)
-        {
-            //if there are any enemy tiles in the bottom row, player loses
-            if (board[6][x] == 0)
-            {
-                return true;
-            }
-        }
-
         //we'll randomly generate the upper row
         Random rand = new Random();
         for (int x = 0; x < 5; x++)
@@ -86,6 +76,15 @@ public class Board {
                     //we empty the tile that moved
                     board[x - 1][y] = -1;
                 }
+            }
+        }
+        //we'll check if the player loses
+        for (int x = 0; x < 5; x++)
+        {
+            //if there are any enemy tiles in the bottom row, player loses
+            if (board[6][x] == 0)
+            {
+                return true;
             }
         }
 
@@ -154,15 +153,19 @@ public class Board {
                 {
                     board[xPos - 1 - xPosMod][yPos - 1] = -1;
                     board[xPos - xPosMod][yPos - 1] = -1;
-                    board[xPos + 1 - xPosMod][yPos - 1] = -1;
+                    if (xPos - xPosMod + 1 < 7) {
+                        board[xPos + 1 - xPosMod][yPos - 1] = -1;
+                    }
                 }
                 if (yPos < 4)
                 {
                     board[xPos - 1 - xPosMod][yPos + 1] = -1;
                     board[xPos - xPosMod][yPos + 1] = -1;
-                    board[xPos + 1 - xPosMod][yPos + 1] = -1;
+                    if (xPos - xPosMod + 1 < 7) {
+                        board[xPos + 1 - xPosMod][yPos + 1] = -1;
+                    }
                 }
-                if (xPos < 6)
+                if (xPos - xPosMod + 2 <= 6)
                 {
                     board[xPos + 2 - xPosMod][yPos] = -1;
                 }

@@ -149,6 +149,8 @@ public class GameEngine {
                         }
                     }
                 });
+
+
             }
         }
 
@@ -189,6 +191,7 @@ public class GameEngine {
             @Override
             public void run() {
                 drawUserTile();
+                drawScore();
             }
         });
     }
@@ -209,6 +212,8 @@ public class GameEngine {
                 Log.v("IN LOOP", "looping");
                 //have the board update itself and check if the game is over
                 isGameOver = playingBoard.move();
+                if (isGameOver)
+                    break;
                 //make new tiles
                 table.generateTile();
                 //update the ui, we'll tell it to update the ui in the ui thread
