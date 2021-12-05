@@ -36,7 +36,7 @@
         android:id="@+id/tileTxt10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="210dp"
         android:layout_marginTop="16dp"
         android:text="@string/default_tile"
         android:textSize="34sp"
@@ -69,11 +69,12 @@
         android:layout_width="79dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/default_tile"
         android:textSize="20sp"
         app:iconTint="#775555"
         app:layout_constraintEnd_toStartOf="@+id/tileButton42"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt30" />
 
@@ -81,11 +82,12 @@
         android:id="@+id/tileButton44"
         android:layout_width="79dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:text="@string/default_tile"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toEndOf="@+id/tileButton42"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt34" />
 
@@ -114,11 +116,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="100dp"
         android:text="@string/default_tile"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/tileTxt11"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -136,10 +138,11 @@
         android:id="@+id/tileButton42"
         android:layout_width="79dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/default_tile"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt32" />
 
@@ -197,10 +200,11 @@
         android:id="@+id/tileButton43"
         android:layout_width="79dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/default_tile"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/tileButton44"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toEndOf="@+id/tileButton42"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt33" />
 
@@ -209,11 +213,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="230dp"
         android:text="@string/default_tile"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tileTxt21"
+        app:layout_constraintStart_toStartOf="@+id/tileTxt10"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt10" />
 
     <TextView
@@ -282,11 +285,10 @@
         android:id="@+id/tileButton41"
         android:layout_width="79dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="@dimen/tile_start_margin"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:text="@string/default_tile"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/tileButton42"
         app:layout_constraintStart_toEndOf="@+id/tileButton40"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt31" />
 
@@ -294,10 +296,10 @@
         android:id="@+id/tileTxt11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:text="@string/default_tile"
         android:textSize="34sp"
-        app:layout_constraintEnd_toStartOf="@+id/tileTxt12"
         app:layout_constraintStart_toEndOf="@+id/tileTxt10"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -316,7 +318,8 @@
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="14dp"
         android:text="@string/userTile_name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
