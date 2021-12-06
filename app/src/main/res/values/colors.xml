@@ -13,4 +13,5 @@
     <color name="credits_bg4">#8CDAF7A6</color>
     <color name="credits_bg5">#8CFFC300</color>
     <color name="credits_bg6">#8CFF5733</color>
+    <color name="game_over_bg">#D3000000</color>
 </resources>

@@ -17,19 +17,6 @@
         app:layout_constraintTop_toBottomOf="@+id/volume_text" />
 
     <TextView
-        android:id="@+id/settings_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/suez_one"
-        android:text="Settings"
-        android:textColor="#000000"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/volume_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,9 +25,10 @@
         android:text="Volume"
         android:textColor="#000000"
         android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_text" />
+        app:layout_constraintBottom_toTopOf="@+id/volume_slider" />
 
     <TextView
         android:id="@+id/difficulty_text"
@@ -105,4 +93,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_medium" />
+
+    <FrameLayout
+        android:id="@+id/testfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

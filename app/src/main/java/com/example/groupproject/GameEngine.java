@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import org.w3c.dom.Text;
 
 /**
@@ -28,7 +32,7 @@ public class GameEngine {
     //this is the userTiles that will generate new playerTiles
     private UserTiles table;
     //this designates whether or not the game is over
-    private boolean isGameOver;
+    public boolean isGameOver;
 
     //UI Stuff
     //this is the context the ui is done in
@@ -145,6 +149,8 @@ public class GameEngine {
                         }
                     }
                 });
+
+
             }
         }
 
@@ -185,6 +191,7 @@ public class GameEngine {
             @Override
             public void run() {
                 drawUserTile();
+                drawScore();
             }
         });
     }
@@ -205,6 +212,8 @@ public class GameEngine {
                 Log.v("IN LOOP", "looping");
                 //have the board update itself and check if the game is over
                 isGameOver = playingBoard.move();
+                if (isGameOver)
+                    break;
                 //make new tiles
                 table.generateTile();
                 //update the ui, we'll tell it to update the ui in the ui thread
@@ -223,6 +232,7 @@ public class GameEngine {
         }
         //at the end of the game, we'll update high score
         updateHighScore();
+        ((GameActivity) context).displayGameOver(playingBoard.getScore(), highScore);
     }
 
     /**
@@ -355,9 +365,10 @@ public class GameEngine {
      */
     public void drawScore()
     {
+
         int curScore = playingBoard.getScore();
         scoreTxt.setText("Score: " + String.valueOf( curScore ));
         if (curScore > highScore)
-            highScoreTxt.setText("Highscore: " + String.valueOf(curScore));
+            highScoreTxt.setText("HighScore: " + String.valueOf(curScore));
     }
 }
