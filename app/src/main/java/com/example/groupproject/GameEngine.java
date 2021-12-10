@@ -262,7 +262,7 @@ public class GameEngine {
                         textTiles[x][y].setText("[---]");
                         break;
                     case 0:
-                        textTiles[x][y].setText("[-X-]");
+                        textTiles[x][y].setText("[-x-]");
                         break;
                     case 1:
                         textTiles[x][y].setText("[-1-]");
