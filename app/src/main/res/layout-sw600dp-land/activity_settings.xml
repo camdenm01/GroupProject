@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/parchment"
+    tools:context=".SettingsActivity">
+
+    <SeekBar
+        android:id="@+id/volume_slider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_text" />
+
+    <TextView
+        android:id="@+id/volume_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/suez_one"
+        android:text="Volume"
+        android:textColor="#000000"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/difficulty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/suez_one"
+        android:text="Difficulty"
+        android:textColor="#000000"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.625" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_easy"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:background="#7C7069"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
+        android:text="Easy"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_medium"
+        app:layout_constraintEnd_toEndOf="@+id/button_medium" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_medium"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="56dp"
+        android:background="#7C7069"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
+        android:text="Medium"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/difficulty_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_hard"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:background="#7C7069"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
+        android:text="Hard"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/button_medium"
+        app:layout_constraintTop_toBottomOf="@+id/button_medium" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,31 +10,28 @@
         android:id="@+id/scoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="30dp"
         android:text="@string/default_score"
-        android:textSize="45sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/tileButton50"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton51" />
 
     <TextView
         android:id="@+id/highScoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:text="@string/default_highScore"
-        android:textSize="45sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
+        app:layout_constraintEnd_toEndOf="@+id/tileButton54"
+        app:layout_constraintTop_toTopOf="@+id/scoreTxt" />
 
     <TextView
         android:id="@+id/tileTxt10"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="43dp"
         android:text="@string/default_tile"
         android:textSize="50sp"
@@ -108,10 +105,11 @@
         android:id="@+id/tileTxt12"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="28dp"
         android:text="@string/default_tile"
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,7 +118,7 @@
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="30dp"
         android:text="@string/default_tile"
         android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/tileTxt12"
@@ -134,6 +132,7 @@
         android:text="@string/default_tile"
         android:textSize="31sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tileTxt32" />
 
@@ -243,7 +242,7 @@
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="30dp"
         android:text="@string/default_tile"
         android:textSize="50sp"
         app:layout_constraintStart_toEndOf="@+id/tileTxt13"
@@ -284,7 +283,7 @@
         android:id="@+id/tileTxt11"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="42dp"
         android:text="@string/default_tile"
         android:textSize="50sp"
@@ -295,54 +294,53 @@
         android:id="@+id/tileButton3"
         android:layout_width="105dp"
         android:layout_height="75dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:text="@string/default_tile"
         android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton2"
-        app:layout_constraintStart_toEndOf="@+id/tileButton2" />
+        app:layout_constraintEnd_toEndOf="@+id/tileButton2"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton2" />
 
     <TextView
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/userTile_name"
         android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton52" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/tileButton1"
         android:layout_width="105dp"
         android:layout_height="75dp"
-        android:layout_marginTop="810dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="36dp"
         android:text="@string/default_tile"
         android:textSize="31sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/tileButton0"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton0" />
 
     <Button
         android:id="@+id/tileButton0"
         android:layout_width="105dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/default_tile"
         android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton1"
-        app:layout_constraintEnd_toStartOf="@+id/tileButton1" />
+        app:layout_constraintEnd_toEndOf="@+id/textView42"
+        app:layout_constraintStart_toStartOf="@+id/textView42"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
     <Button
         android:id="@+id/tileButton2"
         android:layout_width="105dp"
         android:layout_height="75dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:text="@string/default_tile"
         android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton1"
-        app:layout_constraintStart_toEndOf="@+id/tileButton1" />
+        app:layout_constraintEnd_toEndOf="@+id/tileButton1"
+        app:layout_constraintTop_toBottomOf="@+id/tileButton1" />
 
     <FrameLayout
         android:id="@+id/game_over_fragment_container"
