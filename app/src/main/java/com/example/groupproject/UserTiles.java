@@ -102,6 +102,11 @@ public class UserTiles {
         return storedTiles[selectedIndex];
     }
 
+    public void setTile(int selectedIndex, int tileNum)
+    {
+        storedTiles[selectedIndex] = tileNum;
+    }
+
     /**
      * increments timeLastGen
      */

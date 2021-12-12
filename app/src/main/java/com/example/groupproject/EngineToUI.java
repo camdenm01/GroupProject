@@ -21,7 +21,7 @@ public class EngineToUI implements Runnable
     EngineToUI(Activity inputAct, TextView score, TextView highScore, String storedDataLocation)
     {
         //set up the game
-        game = new GameEngine(inputAct, score, highScore, "tileTxt", "tileButton", "tileButton", storedDataLocation);
+        game = new GameEngine(inputAct, score, highScore, "tileImage", "tileIButton", "tilePButton", storedDataLocation);
     }
 
     @Override
