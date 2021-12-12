@@ -4,10 +4,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -270,7 +268,7 @@ public class GameEngine {
                         imageTiles[x][y].setImageResource(R.drawable.greatswordtile);
                         break;
                     case 3:
-                        imageTiles[x][y].setImageResource(R.drawable.bishoptile);
+                        imageTiles[x][y].setImageResource(R.drawable.axetile);
                         break;
                     case 4:
                         imageTiles[x][y].setImageResource(R.drawable.daggertile);
@@ -302,7 +300,7 @@ public class GameEngine {
                         playerSpaces[x][y].setImageResource(R.drawable.greatswordtile);
                         break;
                     case 3:
-                        playerSpaces[x][y].setImageResource(R.drawable.bishoptile);
+                        playerSpaces[x][y].setImageResource(R.drawable.axetile);
                         break;
                     case 4:
                         playerSpaces[x][y].setImageResource(R.drawable.daggertile);
@@ -339,7 +337,7 @@ public class GameEngine {
                     userTiles[x].setImageResource(R.drawable.greatswordtile);
                     break;
                 case 3:
-                    userTiles[x].setImageResource(R.drawable.bishoptile);
+                    userTiles[x].setImageResource(R.drawable.axetile);
                     break;
                 case 4:
                     userTiles[x].setImageResource(R.drawable.daggertile);
