@@ -165,9 +165,9 @@ public class Board {
                         board[xPos + 1 - xPosMod][yPos + 1] = -1;
                     }
                 }
-                if (xPos - xPosMod + 2 <= 6)
+                if (xPos - xPosMod + 1 <= 6)
                 {
-                    board[xPos + 2 - xPosMod][yPos] = -1;
+                    board[xPos + 1 - xPosMod][yPos] = -1;
                 }
                 board[xPos - 1 - xPosMod][yPos] = -1;
                 break;

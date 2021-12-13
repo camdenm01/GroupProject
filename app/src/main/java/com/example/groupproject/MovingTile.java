@@ -36,7 +36,9 @@ public class MovingTile {
     public int release()
     {
         active = false;
-        return tileType;
+        int prevTileType = tileType;
+        tileType = -1;
+        return prevTileType;
     }
 
     /**

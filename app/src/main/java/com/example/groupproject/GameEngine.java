@@ -6,14 +6,9 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import org.w3c.dom.Text;
 
 /**
  * this is the engine that will handle player input and all events in the game
@@ -40,11 +35,11 @@ public class GameEngine {
     //score and highScore are the textviews that will show what the variable name suggests
     private TextView scoreTxt, highScoreTxt;
     //this holds what will be drawn onto the tiles that the player can't interact with (top 3 rows)
-    private TextView[][] textTiles;
+    private ImageView[][] imageTiles;
     //this holds the buttons that will hold where the player can place tiles
-    private Button[][] playerSpaces;
+    private ImageButton[][] playerSpaces;
     //this holds where the tiles will be generated, the button is so the player can select a tile
-    private Button[] userTiles;
+    private ImageButton[] userTiles;
 
     /**
      * @param textScore given to uiControl
@@ -99,9 +94,9 @@ public class GameEngine {
         }
 
         //set up the arrays to hold the textViews and buttons
-        textTiles = new TextView[3][5];
-        playerSpaces = new Button[2][5];
-        userTiles = new Button[4];
+        imageTiles = new ImageView[3][5];
+        playerSpaces = new ImageButton[2][5];
+        userTiles = new ImageButton[4];
 
         //we'll iterate through textTiles and set up all the textValue
         for (int x = 0; x < 3; x++)
@@ -110,7 +105,7 @@ public class GameEngine {
             {
                 String textID = txtNameBoard + String.valueOf(x + 1) + String.valueOf(y);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
-                textTiles[x][y] = (TextView) activity.findViewById(resourceID);
+                imageTiles[x][y] = (ImageView) activity.findViewById(resourceID);
             }
         }
 
@@ -121,7 +116,7 @@ public class GameEngine {
             {
                 String textID = buttonNameBoard + String.valueOf(x + 4) + String.valueOf(y);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
-                playerSpaces[x][y] = (Button) activity.findViewById(resourceID);
+                playerSpaces[x][y] = (ImageButton) activity.findViewById(resourceID);
                 //when the button is clicked we should change the text of the button if mTile is active
                 playerSpaces[x][y].setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -159,7 +154,7 @@ public class GameEngine {
         {
                 String textID = nameUserTile + String.valueOf(x);
                 int resourceID = activity.getResources().getIdentifier(textID, "id", activity.getPackageName());
-                userTiles[x] = (Button) activity.findViewById(resourceID);
+                userTiles[x] = (ImageButton) activity.findViewById(resourceID);
                 //TO DO: set up onClickListener
                 userTiles[x].setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -172,7 +167,9 @@ public class GameEngine {
                         //if the button doesn't have an empty tile, then we'll select it and put it in movingTile
                         if (table.getTile(tableIndex) != -1)
                         {
+                            int movedTile = mTile.release();
                             mTile.setActive(table.selectTile(tableIndex));
+                            table.setTile(tableIndex, movedTile);
                         }
 
                         //we'll need to drawUserTile because it changed
@@ -259,25 +256,25 @@ public class GameEngine {
                 switch (playingBoard.getTile(x + 1, y))
                 {
                     case -1:
-                        textTiles[x][y].setText("[---]");
+                        imageTiles[x][y].setImageResource(R.drawable.emptytile);
                         break;
                     case 0:
-                        textTiles[x][y].setText("[-x-]");
+                        imageTiles[x][y].setImageResource(R.drawable.enemytile);
                         break;
                     case 1:
-                        textTiles[x][y].setText("[-1-]");
+                        imageTiles[x][y].setImageResource(R.drawable.swordtile);
                         break;
                     case 2:
-                        textTiles[x][y].setText("[-2-]");
+                        imageTiles[x][y].setImageResource(R.drawable.greatswordtile);
                         break;
                     case 3:
-                        textTiles[x][y].setText("[-3-]");
+                        imageTiles[x][y].setImageResource(R.drawable.axetile);
                         break;
                     case 4:
-                        textTiles[x][y].setText("[-4-]");
+                        imageTiles[x][y].setImageResource(R.drawable.daggertile);
                         break;
                     case 5:
-                        textTiles[x][y].setText("[-5-]");
+                        imageTiles[x][y].setImageResource(R.drawable.bombtile);
                         break;
                 }
             }
@@ -291,25 +288,25 @@ public class GameEngine {
                 switch (playingBoard.getTile(x + 4, y))
                 {
                     case -1:
-                        playerSpaces[x][y].setText("[---]");
+                        playerSpaces[x][y].setImageResource(R.drawable.emptytile);
                         break;
                     case 0:
-                        playerSpaces[x][y].setText("[-X-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.enemytile);
                         break;
                     case 1:
-                        playerSpaces[x][y].setText("[-1-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.swordtile);
                         break;
                     case 2:
-                        playerSpaces[x][y].setText("[-2-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.greatswordtile);
                         break;
                     case 3:
-                        playerSpaces[x][y].setText("[-3-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.axetile);
                         break;
                     case 4:
-                        playerSpaces[x][y].setText("[-4-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.daggertile);
                         break;
                     case 5:
-                        playerSpaces[x][y].setText("[-5-]");
+                        playerSpaces[x][y].setImageResource(R.drawable.bombtile);
                         break;
                 }
             }
@@ -328,25 +325,25 @@ public class GameEngine {
             switch (table.getTile(x))
             {
                 case -1:
-                    userTiles[x].setText("[---]");
+                    userTiles[x].setImageResource(R.drawable.emptytile);
                     break;
                 case 0:
-                    userTiles[x].setText("[-X-]");
+                    userTiles[x].setImageResource(R.drawable.enemytile);
                     break;
                 case 1:
-                    userTiles[x].setText("[-1-]");
+                    userTiles[x].setImageResource(R.drawable.swordtile);
                     break;
                 case 2:
-                    userTiles[x].setText("[-2-]");
+                    userTiles[x].setImageResource(R.drawable.greatswordtile);
                     break;
                 case 3:
-                    userTiles[x].setText("[-3-]");
+                    userTiles[x].setImageResource(R.drawable.axetile);
                     break;
                 case 4:
-                    userTiles[x].setText("[-4-]");
+                    userTiles[x].setImageResource(R.drawable.daggertile);
                     break;
                 case 5:
-                    userTiles[x].setText("[-5-]");
+                    userTiles[x].setImageResource(R.drawable.bombtile);
                     break;
             }
         }
