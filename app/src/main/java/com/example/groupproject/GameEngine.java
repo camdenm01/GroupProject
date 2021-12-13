@@ -55,7 +55,7 @@ public class GameEngine {
     GameEngine(Activity activity, TextView textScore, TextView textHS, String txtNameBoard, String buttonNameBoard, String nameUserTile, String storedData)
     {
         //we'll created a selected difficulty int to give GameEngine
-        SharedPreferences sharedPreferences = activity.getSharedPreferences(storedData, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("SharedPrefs", MODE_PRIVATE);
         String selectedDifficulty = sharedPreferences.getString("difficulty", "");
         int selD;
         //we'll find the corresponding number
@@ -71,7 +71,7 @@ public class GameEngine {
                 selD = 2;
                 break;
         }
-        int hScore = sharedPreferences.getInt("highScore", 0);
+        highScore = sharedPreferences.getInt("highScore", 0);
         isGameOver = false;
         //set up custom classes
         playingBoard = new Board(selD);
@@ -80,6 +80,7 @@ public class GameEngine {
         //get score and highscore textview
         scoreTxt = textScore;
         highScoreTxt = textHS;
+        highScoreTxt.setText("Highscore: " + highScore);
         //set up context
         context = activity;
         //set up how long we should wait
@@ -210,7 +211,7 @@ public class GameEngine {
         //this will hold the time since last frame so we know when we need to update the baord
         long lastFrame = System.currentTimeMillis();
         //while the game isn't over
-        while (!isGameOver)
+        while (!isGameOver && ((GameActivity) context).active)
         {
             //if it's time to update the board, we do
             if (System.currentTimeMillis() - lastFrame >= timeToWait)
@@ -248,9 +249,10 @@ public class GameEngine {
      */
     public void updateHighScore()
     {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = ((GameActivity) context).getSharedPreferences("SharedPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("highScore", highScore);
+        editor.apply();
     }
 
     /**
@@ -376,8 +378,11 @@ public class GameEngine {
 
         int curScore = playingBoard.getScore();
         scoreTxt.setText("Score: " + String.valueOf( curScore ));
-        if (curScore > highScore)
+        if (curScore > highScore) {
             highScoreTxt.setText("HighScore: " + String.valueOf(curScore));
+            highScore = curScore;
+        }
+
     }
 
     /**
