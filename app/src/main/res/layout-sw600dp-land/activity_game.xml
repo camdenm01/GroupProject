@@ -146,8 +146,8 @@
         android:id="@+id/tileImage10"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/tilePButton1"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emptytile" />
@@ -202,7 +202,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/tileImage10"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emptytile" />
@@ -212,7 +212,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/tileImage11"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emptytile" />
@@ -222,7 +222,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/tileImage12"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emptytile" />
@@ -232,7 +232,7 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toEndOf="@+id/tileImage13"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/emptytile" />
@@ -369,10 +369,12 @@
 
     <FrameLayout
         android:id="@+id/game_over_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
