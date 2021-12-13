@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <FrameLayout
+        android:id="@+id/game_over_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp" />
+
     <TextView
         android:id="@+id/scoreTxt"
         android:layout_width="wrap_content"
@@ -352,12 +358,5 @@
         app:layout_constraintStart_toStartOf="@+id/textView42"
         app:layout_constraintTop_toBottomOf="@+id/tileButton1"
         app:layout_constraintVertical_bias="0.455" />
-
-    <FrameLayout
-        android:id="@+id/game_over_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="10dp"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
