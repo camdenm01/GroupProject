@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -40,6 +41,8 @@ public class GameEngine {
     private ImageButton[][] playerSpaces;
     //this holds where the tiles will be generated, the button is so the player can select a tile
     private ImageButton[] userTiles;
+    //this will be used to play music
+    MediaPlayer bgmPlayer;
 
     /**
      * @param textScore given to uiControl
@@ -97,6 +100,10 @@ public class GameEngine {
         imageTiles = new ImageView[3][5];
         playerSpaces = new ImageButton[2][5];
         userTiles = new ImageButton[4];
+
+        //sets up our music player
+        bgmPlayer = MediaPlayer.create(context, R.raw.tiletrisbgm);
+        bgmPlayer.setLooping(true);
 
         //we'll iterate through textTiles and set up all the textValue
         for (int x = 0; x < 3; x++)
@@ -198,6 +205,8 @@ public class GameEngine {
      */
     public void gameLoop()
     {
+        //we'll start playing the music
+        bgmPlayer.start();
         //this will hold the time since last frame so we know when we need to update the baord
         long lastFrame = System.currentTimeMillis();
         //while the game isn't over
@@ -230,6 +239,8 @@ public class GameEngine {
         //at the end of the game, we'll update high score
         updateHighScore();
         ((GameActivity) context).displayGameOver(playingBoard.getScore(), highScore);
+        //we'll stop playing our music
+        stopMusic();
     }
 
     /**
@@ -367,5 +378,20 @@ public class GameEngine {
         scoreTxt.setText("Score: " + String.valueOf( curScore ));
         if (curScore > highScore)
             highScoreTxt.setText("HighScore: " + String.valueOf(curScore));
+    }
+
+    /**
+     * this is used to stop the music when the current gameActivity is done
+     */
+    public void stopMusic()
+    {
+        //if the music player hasn't been destroyed yet...
+        if (bgmPlayer != null)
+        {
+            //...we'll destroy it
+            bgmPlayer.stop();
+            bgmPlayer.release();
+            bgmPlayer = null;
+        }
     }
 }

@@ -6,15 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+
+    <ImageButton
+        android:id="@+id/tilePButton3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:adjustViewBounds="false"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tilePButton0"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tilePButton2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/tilePButton3"
+        app:layout_constraintStart_toStartOf="@+id/spaceMaker"
+        app:layout_constraintTop_toTopOf="@+id/tilePButton0"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tilePButton1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/spaceMaker"
+        app:layout_constraintStart_toEndOf="@+id/tilePButton0"
+        app:layout_constraintTop_toTopOf="@+id/tilePButton0"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tilePButton0"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/tileImage30"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage20"
+        app:layout_constraintTop_toTopOf="@+id/tileImage32"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage31"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage21"
+        app:layout_constraintTop_toTopOf="@+id/tileImage32"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage32"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage22"
+        app:layout_constraintTop_toBottomOf="@+id/tileImage22"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage33"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage23"
+        app:layout_constraintTop_toTopOf="@+id/tileImage32"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage34"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage24"
+        app:layout_constraintTop_toTopOf="@+id/tileImage32"
+        app:srcCompat="@drawable/emptytile" />
+
     <TextView
         android:id="@+id/scoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/default_score"
-        android:textSize="45sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,337 +117,249 @@
         android:id="@+id/highScoreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/default_highScore"
-        android:textSize="45sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
-
-    <TextView
-        android:id="@+id/tileTxt10"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="43dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toStartOf="@+id/tileTxt11"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tileTxt32"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt22"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt22" />
-
-    <TextView
-        android:id="@+id/tileTxt23"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt13"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt13" />
-
-    <Button
-        android:id="@+id/tileButton40"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:iconTint="#775555"
-        app:layout_constraintEnd_toStartOf="@+id/tileButton41"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt30" />
-
-    <Button
-        android:id="@+id/tileButton44"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toEndOf="@+id/tileButton43"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt34" />
-
-    <TextView
-        android:id="@+id/tileTxt31"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt21"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt21" />
-
-    <TextView
-        android:id="@+id/tileTxt24"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt14"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt14" />
-
-    <TextView
-        android:id="@+id/tileTxt12"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="280dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tileTxt13"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="280dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toEndOf="@+id/tileTxt12"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/tileButton42"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt32" />
-
-    <Button
-        android:id="@+id/tileButton54"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toStartOf="@+id/tileButton44"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton44" />
-
-    <TextView
-        android:id="@+id/tileTxt22"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt12"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt12" />
-
-    <Button
-        android:id="@+id/tileButton51"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toStartOf="@+id/tileButton41"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton41" />
-
-    <TextView
-        android:id="@+id/tileTxt33"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt23"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt23" />
-
-    <Button
-        android:id="@+id/tileButton52"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toStartOf="@+id/tileButton42"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton42" />
-
-    <Button
-        android:id="@+id/tileButton43"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toEndOf="@+id/tileButton42"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt33" />
-
-    <TextView
-        android:id="@+id/tileTxt20"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt10"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt10" />
-
-    <TextView
-        android:id="@+id/tileTxt21"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt11"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt11" />
-
-    <TextView
-        android:id="@+id/tileTxt30"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt20"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt20" />
-
-    <Button
-        android:id="@+id/tileButton50"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toStartOf="@+id/tileButton40"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton40" />
-
-    <TextView
-        android:id="@+id/tileTxt14"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="280dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toEndOf="@+id/tileTxt13"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tileTxt34"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintStart_toStartOf="@+id/tileTxt24"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt24" />
-
-    <Button
-        android:id="@+id/tileButton53"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintStart_toStartOf="@+id/tileButton43"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton43" />
-
-    <Button
-        android:id="@+id/tileButton41"
-        android:layout_width="100dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="25dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintEnd_toStartOf="@+id/tileButton42"
-        app:layout_constraintTop_toBottomOf="@+id/tileTxt31" />
-
-    <TextView
-        android:id="@+id/tileTxt11"
-        android:layout_width="80dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="42dp"
-        android:text="@string/default_tile"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toStartOf="@+id/tileTxt12"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/tileButton3"
-        android:layout_width="105dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="40dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton2"
-        app:layout_constraintStart_toEndOf="@+id/tileButton2" />
 
     <TextView
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="48dp"
         android:text="@string/userTile_name"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tileButton52" />
+        app:layout_constraintTop_toBottomOf="@+id/tileIButton52" />
 
-    <Button
-        android:id="@+id/tileButton1"
-        android:layout_width="105dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="810dp"
-        android:layout_marginEnd="140dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
+    <ImageView
+        android:id="@+id/tileImage10"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tileImage12"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage20"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage10"
+        app:layout_constraintTop_toTopOf="@+id/tileImage22"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage21"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage11"
+        app:layout_constraintTop_toTopOf="@+id/tileImage22"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage22"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage12"
+        app:layout_constraintTop_toBottomOf="@+id/tileImage12"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage23"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage13"
+        app:layout_constraintTop_toTopOf="@+id/tileImage22"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage24"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="@+id/tileImage14"
+        app:layout_constraintTop_toTopOf="@+id/tileImage22"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage11"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/tileImage12"
+        app:layout_constraintStart_toEndOf="@+id/tileImage10"
+        app:layout_constraintTop_toTopOf="@+id/tileImage12"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageView
+        android:id="@+id/tileImage12"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreTxt"
+        app:srcCompat="@drawable/emptytile" />
 
-    <Button
-        android:id="@+id/tileButton0"
-        android:layout_width="105dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton1"
-        app:layout_constraintEnd_toStartOf="@+id/tileButton1" />
+    <ImageView
+        android:id="@+id/tileImage13"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/tileImage14"
+        app:layout_constraintStart_toEndOf="@+id/tileImage12"
+        app:layout_constraintTop_toTopOf="@+id/tileImage12"
+        app:srcCompat="@drawable/emptytile" />
 
-    <Button
-        android:id="@+id/tileButton2"
-        android:layout_width="105dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="40dp"
-        android:text="@string/default_tile"
-        android:textSize="31sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tileButton1"
-        app:layout_constraintStart_toEndOf="@+id/tileButton1" />
+    <ImageView
+        android:id="@+id/tileImage14"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tileImage12"
+        app:srcCompat="@drawable/emptytile" />
+
+    <ImageButton
+        android:id="@+id/tileIButton40"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileImage30"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton41"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileImage31"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton42"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileImage32"
+        app:layout_constraintTop_toBottomOf="@+id/tileImage32"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton43"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileImage33"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton44"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileImage34"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton54"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileIButton44"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton52"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton53"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileIButton43"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton52"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton52"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileIButton42"
+        app:layout_constraintTop_toBottomOf="@+id/tileIButton42"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton51"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileIButton41"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton52"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tileIButton50"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/tileIButton40"
+        app:layout_constraintTop_toTopOf="@+id/tileIButton52"
+        app:srcCompat="@drawable/emptytile"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/spaceMaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tilePButton0" />
 
     <FrameLayout
         android:id="@+id/game_over_fragment_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:elevation="10dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
