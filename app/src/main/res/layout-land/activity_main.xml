@@ -8,6 +8,27 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/tutorial_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_margin"
+        android:layout_weight="1"
+        android:backgroundTint="#8114FF"
+        android:fontFamily="@font/suez_one"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="1"
+        android:shadowRadius="4"
+        android:text="@string/how_to_play"
+        app:cornerRadius="@dimen/button_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1sp" />
+
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
@@ -81,9 +102,11 @@
         android:shadowRadius="4"
         android:text="@string/team_member_credits"
         app:cornerRadius="@dimen/button_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_button"
+        app:layout_constraintTop_toBottomOf="@+id/tutorial_button"
+        app:layout_constraintVertical_bias="0.085"
         app:strokeColor="@color/black"
         app:strokeWidth="1sp" />
 
