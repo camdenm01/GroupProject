@@ -17,10 +17,12 @@
     <string name="tutorial">Don\'t let the enemy tiles reach the bottom! Enemy tiles will randomly
                             fall from the top of the grid. Luckily you have five types of tiles that will randomly
                             generate as well! All player tile actions will activate on collision with an enemy tile.
-                            In addition to destroying the enemy tile it collides with, each player tile has a unique function.</string>
+                            In addition to destroying the enemy tile it collides with, each player tile has a unique function.
+                            Just tap the tile you want to place from Player Tiles and tap where you want to put it on the board.
+                            Tiles can only be placed in the bottom 2 rows.</string>
     <string name="sword_text">The Sword tile destroys any enemy tiles in the two squares above the collision.</string>
-    <string name="greatsword_text">The Great Sword tile destroys enemy tiles in the four swuares above the collision.</string>
-    <string name="dagger_text">The Dagger tile destroys enemy tiles in the squares to the left and right of the collision</string>
-    <string name="bishop_text">The Bishop tile destroys enemy tiles  in the squares to the top-left and top-right of the collision.</string>
-    <string name="bomb_text">The Bomb tile destroys all enemy tiles that are adjacent to it, but not below it.</string>
+    <string name="greatsword_text">The Great Sword tile destroys all enemy tiles above the collision.</string>
+    <string name="dagger_text">The Dagger tile destroys enemy tiles that are up and to the right and left as well as right above the collision.</string>
+    <string name="bishop_text">The Axe tile destroys enemy tiles that are up and to the right and left of the collision and the tiles above those.</string>
+    <string name="bomb_text">The Bomb tile destroys all enemy tiles around it.</string>
 </resources>
