@@ -103,6 +103,7 @@ public class GameEngine {
 
         //sets up our music player
         bgmPlayer = MediaPlayer.create(context, R.raw.tiletrisbgm);
+        bgmPlayer.setLooping(true);
 
         //we'll iterate through textTiles and set up all the textValue
         for (int x = 0; x < 3; x++)
