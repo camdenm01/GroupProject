@@ -9,8 +9,8 @@
 
     <ImageButton
         android:id="@+id/tilePButton3"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="24dp"
         android:adjustViewBounds="false"
         android:padding="0dp"
@@ -22,8 +22,8 @@
 
     <ImageButton
         android:id="@+id/tilePButton2"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -35,8 +35,8 @@
 
     <ImageButton
         android:id="@+id/tilePButton1"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -48,8 +48,8 @@
 
     <ImageButton
         android:id="@+id/tilePButton0"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
@@ -62,24 +62,24 @@
 
     <ImageView
         android:id="@+id/tileImage30"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage20"
         app:layout_constraintTop_toTopOf="@+id/tileImage32"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage31"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage21"
         app:layout_constraintTop_toTopOf="@+id/tileImage32"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage32"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage22"
         app:layout_constraintTop_toBottomOf="@+id/tileImage22"
@@ -87,16 +87,16 @@
 
     <ImageView
         android:id="@+id/tileImage33"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage23"
         app:layout_constraintTop_toTopOf="@+id/tileImage32"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage34"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage24"
         app:layout_constraintTop_toTopOf="@+id/tileImage32"
         app:srcCompat="@drawable/emptytile" />
@@ -108,7 +108,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/default_score"
-        android:textSize="60sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -120,7 +120,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/default_highScore"
-        android:textSize="60sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -132,15 +132,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="@string/userTile_name"
-        android:textSize="60sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tileIButton52" />
 
     <ImageView
         android:id="@+id/tileImage10"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tileImage12"
@@ -148,24 +148,24 @@
 
     <ImageView
         android:id="@+id/tileImage20"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage10"
         app:layout_constraintTop_toTopOf="@+id/tileImage22"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage21"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage11"
         app:layout_constraintTop_toTopOf="@+id/tileImage22"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage22"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage12"
         app:layout_constraintTop_toBottomOf="@+id/tileImage12"
@@ -173,24 +173,24 @@
 
     <ImageView
         android:id="@+id/tileImage23"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage13"
         app:layout_constraintTop_toTopOf="@+id/tileImage22"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage24"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintStart_toStartOf="@+id/tileImage14"
         app:layout_constraintTop_toTopOf="@+id/tileImage22"
         app:srcCompat="@drawable/emptytile" />
 
     <ImageView
         android:id="@+id/tileImage11"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintEnd_toStartOf="@+id/tileImage12"
         app:layout_constraintStart_toEndOf="@+id/tileImage10"
         app:layout_constraintTop_toTopOf="@+id/tileImage12"
@@ -198,8 +198,8 @@
 
     <ImageView
         android:id="@+id/tileImage12"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -208,8 +208,8 @@
 
     <ImageView
         android:id="@+id/tileImage13"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintEnd_toStartOf="@+id/tileImage14"
         app:layout_constraintStart_toEndOf="@+id/tileImage12"
         app:layout_constraintTop_toTopOf="@+id/tileImage12"
@@ -217,8 +217,8 @@
 
     <ImageView
         android:id="@+id/tileImage14"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tileImage12"
@@ -226,8 +226,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton40"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -238,8 +238,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton41"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -250,8 +250,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton42"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
@@ -263,8 +263,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton43"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -275,8 +275,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton44"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -287,8 +287,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton54"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -299,8 +299,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton53"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -311,8 +311,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton52"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
@@ -324,8 +324,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton51"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
@@ -336,8 +336,8 @@
 
     <ImageButton
         android:id="@+id/tileIButton50"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:adjustViewBounds="true"
         android:padding="0dp"
         android:scaleType="fitCenter"
