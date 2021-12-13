@@ -13,4 +13,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="replay">Replay</string>
     <string name="back_to_menu">Back to Menu</string>
+    <string name="how_to_play">How to Play</string>
+    <string name="tutorial">Don\'t let the enemy tiles reach the bottom! Enemy tiles will randomly
+                            fall from the top of the grid. Luckily you have five types of tiles that will randomly
+                            generate as well! All player tile actions will activate on collision with an enemy tile.
+                            In addition to destroying the enemy tile it collides with, each player tile has a unique function.</string>
+    <string name="sword_text">The Sword tile destroys any enemy tiles in the two squares above the collision.</string>
+    <string name="greatsword_text">The Great Sword tile destroys enemy tiles in the four swuares above the collision.</string>
+    <string name="dagger_text">The Dagger tile destroys enemy tiles in the squares to the left and right of the collision</string>
+    <string name="bishop_text">The Bishop tile destroys enemy tiles  in the squares to the top-left and top-right of the collision.</string>
+    <string name="bomb_text">The Bomb tile destroys all enemy tiles that are adjacent to it, but not below it.</string>
 </resources>
