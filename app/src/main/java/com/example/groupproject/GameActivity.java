@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class GameActivity extends AppCompatActivity {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     static boolean active; //used to check if this activity is active
+    private EngineToUI runGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
         //set up game and run
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
         String selectedDifficulty = sharedPreferences.getString("difficulty", "");
-        EngineToUI runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
+        runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
         Thread thread = new Thread(runGame);
         thread.start();
     }
@@ -40,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        runGame.engineMusicStop();
         active = false; //this activity should no longer be active
 
     }

@@ -24,6 +24,11 @@ public class EngineToUI implements Runnable
         game = new GameEngine(inputAct, score, highScore, "tileImage", "tileIButton", "tilePButton", storedDataLocation);
     }
 
+    public void engineMusicStop()
+    {
+        game.stopMusic();
+    }
+
     @Override
     public void run() {
         //start the game loop
