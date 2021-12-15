@@ -11,6 +11,7 @@
         android:theme="@style/Theme.GroupProject">
         <activity
             android:name=".TutorialActivity"
+            android:label="User Guide"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -32,6 +33,7 @@
             android:label="Settings" />
         <activity
             android:name=".GameActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true"
             android:label="@string/game_title" />
 
