@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -38,7 +39,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         hideTitleBar();
         setContentView(R.layout.activity_main);
-        signIn();
+        if(GoogleSignIn.getLastSignedInAccount(this) != null){
+            signIn();
+        }
+
+
 
         Button startGameButton = (Button) findViewById(R.id.game_start_button);
         Button settingsButton = (Button) findViewById(R.id.settings_button);
@@ -62,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        signOut();
+    }
+
 
 
     private void hideTitleBar(){
@@ -82,18 +93,39 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 Intent signInIntent = googleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 9000);
+                startActivityForResult(signInIntent, 2);
             }
         });
     }
 
+    public void signOut(){
+        if(googleSignInClient != null){
+            googleSignInClient.signOut();
+            leaderboardClient = null;
+        }
+    }
+
     public void showLeaderboard(){
-        SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
-        int submission = sharedPreferences.getInt("highScore", 0);
-        leaderboardClient.submitScore(getString(R.string.leaderboard_high_score), submission);
-        leaderboardClient
-                .getAllLeaderboardsIntent()
-                .addOnSuccessListener(intent -> startActivityForResult(intent, 1));
+        if(leaderboardClient == null){
+            String warning = getString(R.string.not_logged_in_error);
+            AlertDialog.Builder alert = new AlertDialog.Builder(this).setMessage(warning)
+                    .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            signIn();
+                        }
+                    });
+            alert.show();
+
+        }
+        else{
+            SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+            int submission = sharedPreferences.getInt("highScore", 0);
+            leaderboardClient.submitScore(getString(R.string.leaderboard_high_score), submission);
+            leaderboardClient
+                    .getAllLeaderboardsIntent()
+                    .addOnSuccessListener(intent -> startActivityForResult(intent, 1));
+        }
 
 
     }
@@ -102,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 9000) {
+        if (requestCode == 2) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
                 // The signed in account is stored in the result.
@@ -111,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
-                    message = "Not logged in to Play Services";
+                    message = getString(R.string.connection_error);
                 }
                 new AlertDialog.Builder(this).setMessage(message)
                         .setNeutralButton(android.R.string.ok, null).show();
