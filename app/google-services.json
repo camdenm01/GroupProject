@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "116868782224",
+    "project_id": "tiletris-73828748",
+    "storage_bucket": "tiletris-73828748.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116868782224:android:63b80a80c068176ccfe015",
+        "android_client_info": {
+          "package_name": "com.example.groupproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116868782224-ijbnisfr9fuir1eal0b144d23qulgnk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.groupproject",
+            "certificate_hash": "665bf01f1c987b2268201a02d26b945530591fa7"
+          }
+        },
+        {
+          "client_id": "116868782224-cels566u2i018s4frbo13r5i6nb70sb8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoGzwE5G7cqPwBhEk2Wcfvoe0IRCB3pHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116868782224-cels566u2i018s4frbo13r5i6nb70sb8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
