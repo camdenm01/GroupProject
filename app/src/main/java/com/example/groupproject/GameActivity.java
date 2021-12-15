@@ -30,6 +30,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onConfigurationChanged(Configuration configuration){
+        super.onConfigurationChanged(configuration);
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            Log.i("Orientation: ", "Landscape");
+        }else if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Log.i("Orientation: ", "Portrait");
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         //set this activity to be active

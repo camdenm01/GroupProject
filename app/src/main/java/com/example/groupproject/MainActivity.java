@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                     .addOnSuccessListener(intent -> startActivityForResult(intent, 1));
         }
 
-
     }
 
 
