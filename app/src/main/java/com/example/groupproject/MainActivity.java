@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 .getAllLeaderboardsIntent()
                 .addOnSuccessListener(intent -> startActivityForResult(intent, 1));
 
-
     }
 
 

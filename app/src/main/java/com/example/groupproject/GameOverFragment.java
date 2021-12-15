@@ -20,7 +20,6 @@ import android.widget.TextView;
 import java.util.zip.Inflater;
 
 public class GameOverFragment extends Fragment{
-    private static final String CONFIG_TAG = "OrientationChange";
     private int currentScore;
     int highScore;
 
@@ -44,16 +43,6 @@ public class GameOverFragment extends Fragment{
 
     public int getHighScore(){
         return highScore;
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration configuration){
-        super.onConfigurationChanged(configuration);
-        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            Log.i(CONFIG_TAG, "Landscape");
-        }else if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Log.i(CONFIG_TAG, "Portrait");
-        }
     }
 
     @Override
