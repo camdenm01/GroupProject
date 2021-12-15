@@ -58,6 +58,7 @@ public class GameActivity extends AppCompatActivity {
         runGame.engineMusicStop();
         active = false; //this activity should no longer be active
 
+
     }
 
     /**hides the title bar when the user is playing the game**/

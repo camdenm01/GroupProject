@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         hideTitleBar();
         setContentView(R.layout.activity_main);
+        //If the user has signed in before, go ahead and sign them in now so leaderboard is ready
         if(GoogleSignIn.getLastSignedInAccount(this) != null){
             signIn();
         }
@@ -86,26 +88,31 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
+        //try to do a silent sign in (no prompt)
         googleSignInClient.silentSignIn().addOnCompleteListener(task -> {
             if(task.isSuccessful()){
                 leaderboardClient = Games.getLeaderboardsClient(MainActivity.this, task.getResult());
 
             }
             else{
+                //if a silent sign in is not possible, load the activity to sign in
                 Intent signInIntent = googleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, 2);
             }
         });
     }
 
+    //sign out of the google account when the game is closed
     public void signOut(){
         if(googleSignInClient != null){
             googleSignInClient.signOut();
-            leaderboardClient = null;
+
         }
     }
 
+    //loads the leaderboard if user is connected to google play service
     public void showLeaderboard(){
+        //if the leaderboard client is null, which means user hasn't logged in, tell them to log in and bring up sign in
         if(leaderboardClient == null){
             String warning = getString(R.string.not_logged_in_error);
             AlertDialog.Builder alert = new AlertDialog.Builder(this).setMessage(warning)
@@ -139,6 +146,9 @@ public class MainActivity extends AppCompatActivity {
                 // The signed in account is stored in the result.
                 GoogleSignInAccount signedInAccount = result.getSignInAccount();
                 leaderboardClient = Games.getLeaderboardsClient(this, signedInAccount);
+                String success = getString(R.string.logged_in_success);
+                new AlertDialog.Builder(this).setMessage(success)
+                        .setNeutralButton(android.R.string.ok, null).show();
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {

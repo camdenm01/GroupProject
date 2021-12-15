@@ -27,5 +27,6 @@
     <string name="bomb_text">The Bomb tile destroys all adjacent enemy tiles around it.</string>
     <string name="connection_error">Can\'t Log In to Play Services. Select an account, or check your connection and try again.</string>
     <string name="not_logged_in_error">You must log in to Google Play to view the leaderboard. Press OK to log in </string>
+    <string name="logged_in_success">You have been logged in successfully! You can now access the leaderboard</string>
 
 </resources>
