@@ -3,17 +3,24 @@ package com.example.groupproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.zip.Inflater;
+
 public class GameOverFragment extends Fragment{
+    private static final String CONFIG_TAG = "OrientationChange";
     private int currentScore;
     int highScore;
 
@@ -27,10 +34,26 @@ public class GameOverFragment extends Fragment{
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    public int getCurrentScore(){
+        return currentScore;
+    }
 
+    public int getHighScore(){
+        return highScore;
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration configuration){
+        super.onConfigurationChanged(configuration);
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            Log.i(CONFIG_TAG, "Landscape");
+        }else if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Log.i(CONFIG_TAG, "Portrait");
+        }
     }
 
     @Override
@@ -41,12 +64,15 @@ public class GameOverFragment extends Fragment{
         //create the replay and back to meny buttons
         Button replayButton = gameOverView.findViewById(R.id.game_replay_button);
         Button menuButton = gameOverView.findViewById(R.id.menu_button);
+
         //create the textviews for current score and highscore
         TextView scoreText = gameOverView.findViewById(R.id.scoreText);
         TextView highScoreText = gameOverView.findViewById(R.id.highScoreText);
+
+
         //set the textViews to display the correct scores
-        scoreText.setText("Score: " + currentScore);
-        highScoreText.setText("Highscore: " + highScore);
+        scoreText.setText("Score: " + getCurrentScore());
+        highScoreText.setText("Highscore: " + getHighScore());
 
         //replay button reloads gameactivity
         replayButton.setOnClickListener(view -> startActivity(new Intent(getActivity(), GameActivity.class)));

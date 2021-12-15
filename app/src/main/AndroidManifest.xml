@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.groupproject">
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +11,8 @@
         android:theme="@style/Theme.GroupProject">
         <activity
             android:name=".TutorialActivity"
-            android:exported="true"
-            android:label="How To Play"/>
+            android:label="User Guide"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,14 +33,13 @@
             android:label="Settings" />
         <activity
             android:name=".GameActivity"
+            android:configChanges="orientation"
             android:exported="true"
             android:label="@string/game_title" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <meta-data android:name="com.google.android.gms.games.APP_ID"
-            android:value="116868782224" />
     </application>
 
 </manifest>
