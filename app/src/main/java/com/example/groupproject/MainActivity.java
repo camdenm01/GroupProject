@@ -1,16 +1,33 @@
 package com.example.groupproject;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.LeaderboardsClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
 public class MainActivity extends AppCompatActivity {
+    private LeaderboardsClient leaderboardClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Button settingsButton = (Button) findViewById(R.id.settings_button);
         Button creditsButton = (Button) findViewById(R.id.credits_button);
         Button tutorialButton = (Button) findViewById(R.id.tutorial_button);
+        Button leaderboardButton = (Button) findViewById(R.id.leaderboard_button);
 
         startGameButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, GameActivity.class)));
 
@@ -30,11 +48,68 @@ public class MainActivity extends AppCompatActivity {
         creditsButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, CreditsActivity.class)));
 
         tutorialButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TutorialActivity.class)));
+
+        leaderboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+                showLeaderboard();
+            }
+        });
     }
 
     private void hideTitleBar(){
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST);
+    }
+
+    private void showLeaderboard(){
+        Log.d("showing leaderboard", "leaderboard");
+        leaderboardClient
+                .getLeaderboardIntent(getString(R.string.leaderboard_id))
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("LB", "LB");
+                        startActivityForResult(task.getResult(), 9004);
+                    }
+                    else{
+                        startActivityForResult(task.getResult(), 9004);
+                    }
+                });
+
+
+    }
+
+    private void signIn() {
+        Log.d("signin", "signin");
+        GoogleSignInOptions signInOptions = GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN;
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        GoogleSignInClient signInClient = GoogleSignIn.getClient(this, signInOptions);
+        Intent intent = signInClient.getSignInIntent();
+        startActivity(intent);
+
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 9000) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()) {
+                // The signed in account is stored in the result.
+                GoogleSignInAccount signedInAccount = result.getSignInAccount();
+                leaderboardClient = Games.getLeaderboardsClient(this, signedInAccount);
+            } else {
+                String message = result.getStatus().getStatusMessage();
+                if (message == null || message.isEmpty()) {
+                    message = "Failed to Log In to Play Services";
+                }
+                new AlertDialog.Builder(this).setMessage(message)
+                        .setNeutralButton(android.R.string.ok, null).show();
+            }
+        }
     }
 }
