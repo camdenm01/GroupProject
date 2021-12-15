@@ -229,13 +229,16 @@ public class GameEngine {
                     public void run() {
                         drawBoard();
                         drawUserTile();
-                        drawMovingTile();
                         drawScore();
                     }
                 });
                 //update time since last frame
                 lastFrame = System.currentTimeMillis();
             }
+        }
+
+        if (playingBoard.getScore() > highScore) {
+            highScore = playingBoard.getScore();
         }
         //at the end of the game, we'll update high score
         updateHighScore();
