@@ -33,7 +33,7 @@
             android:label="Settings" />
         <activity
             android:name=".GameActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:configChanges="orientation"
             android:exported="true"
             android:label="@string/game_title" />
 
