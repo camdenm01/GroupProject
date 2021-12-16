@@ -3,8 +3,11 @@ package com.example.groupproject;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -27,8 +30,8 @@ public class GameEngine {
     private MovingTile mTile;
     //this is the userTiles that will generate new playerTiles
     private UserTiles table;
-    //this designates whether or not the game is over
-    public boolean isGameOver;
+    //this designates whether or not the game is over and whether or not the game needs to end
+    public boolean isGameOver, needEnd;
 
     //UI Stuff
     //this is the context the ui is done in
@@ -73,6 +76,7 @@ public class GameEngine {
         }
         highScore = sharedPreferences.getInt("highScore", 0);
         isGameOver = false;
+        needEnd = false;
         //set up custom classes
         playingBoard = new Board(selD);
         mTile = new MovingTile();
@@ -204,18 +208,15 @@ public class GameEngine {
     /**
      * this holds the gameLoop that will handle everything that happens in the game
      */
-    public void gameLoop()
-    {
+    public void gameLoop() {
         //we'll start playing the music
         bgmPlayer.start();
         //this will hold the time since last frame so we know when we need to update the baord
         long lastFrame = System.currentTimeMillis();
         //while the game isn't over
-        while (!isGameOver && ((GameActivity) context).active)
-        {
+        while (!isGameOver && ((GameActivity) context).active && !needEnd) {
             //if it's time to update the board, we do
-            if (System.currentTimeMillis() - lastFrame >= timeToWait)
-            {
+            if (System.currentTimeMillis() - lastFrame >= timeToWait) {
                 Log.v("IN LOOP", "looping");
                 //have the board update itself and check if the game is over
                 isGameOver = playingBoard.move();
@@ -235,16 +236,28 @@ public class GameEngine {
                 //update time since last frame
                 lastFrame = System.currentTimeMillis();
             }
-        }
 
-        if (playingBoard.getScore() > highScore) {
-            highScore = playingBoard.getScore();
+            if (playingBoard.destroyToEmpty(timeToWait))
+            {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        drawBoard();
+                    }
+                });
+            }
         }
-        //at the end of the game, we'll update high score
-        updateHighScore();
-        ((GameActivity) context).displayGameOver(playingBoard.getScore(), highScore);
-        //we'll stop playing our music
-        stopMusic();
+        if (!needEnd)
+        {
+            if (playingBoard.getScore() > highScore) {
+                highScore = playingBoard.getScore();
+            }
+            //at the end of the game, we'll update high score
+            updateHighScore();
+            ((GameActivity) context).displayGameOver(playingBoard.getScore(), highScore);
+            //we'll stop playing our music
+            stopMusic();
+        }
     }
 
     /**
@@ -271,6 +284,9 @@ public class GameEngine {
             {
                 switch (playingBoard.getTile(x + 1, y))
                 {
+                    case -2:
+                        imageTiles[x][y].setImageResource(R.drawable.destroyedtile);
+                        break;
                     case -1:
                         imageTiles[x][y].setImageResource(R.drawable.emptytile);
                         break;
@@ -303,6 +319,9 @@ public class GameEngine {
             {
                 switch (playingBoard.getTile(x + 4, y))
                 {
+                    case -2:
+                        playerSpaces[x][y].setImageResource(R.drawable.destroyedtile);
+                        break;
                     case -1:
                         playerSpaces[x][y].setImageResource(R.drawable.emptytile);
                         break;
@@ -340,6 +359,9 @@ public class GameEngine {
         {
             switch (table.getTile(x))
             {
+                case -2:
+                    userTiles[x].setImageResource(R.drawable.destroyedtile);
+                    break;
                 case -1:
                     userTiles[x].setImageResource(R.drawable.emptytile);
                     break;
@@ -401,5 +423,47 @@ public class GameEngine {
             bgmPlayer.release();
             bgmPlayer = null;
         }
+    }
+
+    public void getState(Bundle savedInstanceState)
+    {
+        //have Board, UserTiles, and MovingTile get the saved data
+        playingBoard.getBoardState(savedInstanceState);
+        table.getUserTileState(savedInstanceState);
+        mTile.getMovingTileState(savedInstanceState);
+
+        //update game UI
+        context.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                drawBoard();
+                drawUserTile();
+                drawScore();
+            }
+        });
+
+        //
+        isGameOver = savedInstanceState.getBoolean("gameOverCheck");
+    }
+
+    /**
+     * @param outState the bundle that contains saved data
+     */
+    public void saveGame(Bundle outState)
+    {
+        //save data from Board, UserTiles, and MovingTile
+        playingBoard.saveBoard(outState);
+        table.saveUserTile(outState);
+        mTile.saveMovingTile(outState);
+
+        outState.putBoolean("gameOverCheck", isGameOver);
+    }
+
+    /**
+     * this tells our game that it needs to end
+     */
+    public void engineEndGame()
+    {
+        needEnd = true;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.groupproject;
 
+import android.os.Bundle;
+
 /**
  * this is the currently selected tile, in the final version it will be dragged around the screen
  */
@@ -39,6 +41,18 @@ public class MovingTile {
         int prevTileType = tileType;
         tileType = -1;
         return prevTileType;
+    }
+
+    public void getMovingTileState(Bundle savedInstanceState)
+    {
+        tileType = savedInstanceState.getInt("movingTileType");
+        active = savedInstanceState.getBoolean("movingTileIsActive");
+    }
+
+    public void saveMovingTile(Bundle outState)
+    {
+        outState.putInt("movingTileType", tileType);
+        outState.putBoolean("movingTileIsActive", active);
     }
 
     /**

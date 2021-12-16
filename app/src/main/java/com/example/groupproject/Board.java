@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.Random;
@@ -17,6 +18,7 @@ public class Board {
      * see CSC415_groupProject for what each player does upon activation
      */
     private int[][] board;
+    private long[][] lastFrameTime;
     //curNumEnemy = number of enemies on the board; totalNumEnemy = number of enemy tiles generated; difficulty = diffculty selected in setting
     private int curNumEnemy, totalNumEnemy, difficulty;
 
@@ -26,6 +28,7 @@ public class Board {
     Board(int inputD)
     {
         board = new int[7][5];
+        lastFrameTime = new long[7][5];
         for (int x = 0; x < 7; x++)
         {
             for (int y = 0; y < 5; y++)
@@ -65,7 +68,9 @@ public class Board {
                 if (board[x][y] > 0 && board[x - 1][y] == 0)
                 {
                     //we call collide
-                    collide(x, y, board[x][y], 1);
+                    //collide(x, y, board[x][y], 1);
+                    board[x][y] = board[x][y] + 5;
+                    board[x - 1][y] = -1;
                 }
 
                 //if we need to move an enemy tile down, we do
@@ -78,6 +83,31 @@ public class Board {
                 }
             }
         }
+
+        //we'll resolve any collisions of the bombs
+        for (int x = 6; x > 0; x--)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                //if an enemy tile would hit a player tile
+                if (board[x][y] == 10) {
+                    collide(x, y,  5);
+                }
+            }
+        }
+
+        //we'll resolve the rest of the collisions
+        for (int x = 6; x > 0; x--)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                //if an enemy tile would hit a player tile
+                if (board[x][y] > 5) {
+                    collide(x, y, board[x][y] - 5);
+                }
+            }
+        }
+
         //we'll check if the player loses
         for (int x = 0; x < 5; x++)
         {
@@ -100,78 +130,119 @@ public class Board {
      * see CSC415_groupProject for different file effects
      * after effects, tile at xPos, yPos should be empty
      */
-    public void collide(int xPos, int yPos, int curTile, int xPosMod)
+    public void collide(int xPos, int yPos, int curTile)
     {
         //empty both tiles
-        board[xPos][yPos] = -1;
-        board[xPos - xPosMod][yPos] = -1;
+        board[xPos][yPos] = -2;
+        lastFrameTime[xPos][yPos] = System.currentTimeMillis();
+        //board[xPos - xPosMod][yPos] = -1;
 
         //now we have a different effect for each player tile
         switch (curTile)
         {
             case 1:
                 //as a sword, empty two tiles
-                board[xPos - 1 - xPosMod][yPos] = -1;
-                board[xPos - 2 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -2;
+                board[xPos - 2 ][yPos] = -2;
+                lastFrameTime[xPos - 1][yPos] = System.currentTimeMillis();
+                lastFrameTime[xPos - 2][yPos] = System.currentTimeMillis();
                 break;
             case 2:
                 //as a great-sword, eliminate all tiles in a vertical role
                 for (int x = 0; x < xPos; x++)
                 {
-                    board[x][yPos] = -1;
+                    board[x][yPos] = -2;
+                    lastFrameTime[x][yPos] = System.currentTimeMillis();
                 }
                 break;
             case 3:
                 //as twin-axes, eliminate all tile in two lines offset from center
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
-                    board[xPos - 2 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -2;
+                    board[xPos - 2 ][yPos - 1] = -2;
+                    lastFrameTime[xPos - 1][yPos - 1] = System.currentTimeMillis();
+                    lastFrameTime[xPos - 2][yPos - 1] = System.currentTimeMillis();
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
-                    board[xPos - 2 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -2;
+                    board[xPos - 2 ][yPos + 1] = -2;
+                    lastFrameTime[xPos - 1][yPos + 1] = System.currentTimeMillis();
+                    lastFrameTime[xPos - 1][yPos + 1] = System.currentTimeMillis();
                 }
 
                 break;
             case 4:
                 //twin daggers, destroy one tile ahead and diagonal tiles (cone
-                board[xPos - 1 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -2;
+                lastFrameTime[xPos - 1][yPos] = System.currentTimeMillis();
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -2;
+                    lastFrameTime[xPos - 1][yPos - 1] = System.currentTimeMillis();
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -2;
+                    lastFrameTime[xPos - 1][yPos + 1] = System.currentTimeMillis();
                 }
                 break;
             case 5:
                 //as a bomb, destroy all surrounding tiles
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
-                    board[xPos - xPosMod][yPos - 1] = -1;
-                    if (xPos - xPosMod + 1 < 7) {
-                        board[xPos + 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -2;
+                    board[xPos ][yPos - 1] = -2;
+                    lastFrameTime[xPos - 1][yPos - 1] = System.currentTimeMillis();
+                    lastFrameTime[xPos][yPos - 1] = System.currentTimeMillis();
+                    if (xPos  + 1 < 7) {
+                        board[xPos + 1 ][yPos - 1] = -2;
+                        lastFrameTime[xPos + 1][yPos - 1] = System.currentTimeMillis();
                     }
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
-                    board[xPos - xPosMod][yPos + 1] = -1;
-                    if (xPos - xPosMod + 1 < 7) {
-                        board[xPos + 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -2;
+                    board[xPos ][yPos + 1] = -2;
+                    lastFrameTime[xPos - 1][yPos + 1] = System.currentTimeMillis();
+                    lastFrameTime[xPos][yPos + 1] = System.currentTimeMillis();
+                    if (xPos  + 1 < 7) {
+                        board[xPos + 1 ][yPos + 1] = -2;
+                        lastFrameTime[xPos + 1][yPos + 1] = System.currentTimeMillis();
                     }
                 }
-                if (xPos - xPosMod + 1 <= 6)
+                if (xPos  + 1 <= 6)
                 {
-                    board[xPos + 1 - xPosMod][yPos] = -1;
+                    board[xPos + 1 ][yPos] = -2;
+                    lastFrameTime[xPos + 1][yPos] = System.currentTimeMillis();
                 }
-                board[xPos - 1 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -2;
+                lastFrameTime[xPos - 1][yPos] = System.currentTimeMillis();
                 break;
         }
+    }
+
+    /**
+     * this converts all the destroyed tiles to empty tiles
+     */
+    public boolean destroyToEmpty(int timeWait)
+    {
+        boolean needChange = false;
+        //we'll resolve the rest of the collisions
+        for (int x = 6; x > 0; x--)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                if (board[x][y] == -2 && System.currentTimeMillis() - lastFrameTime[x][y] >= timeWait/3)
+                {
+                    board[x][y] = -1;
+                    needChange = true;
+                }
+            }
+        }
+
+        return needChange;
     }
 
     /**
@@ -186,7 +257,7 @@ public class Board {
     {
         if (board[xPos][yPos] == 0)
         {
-            collide(xPos, yPos, tileType, 0);
+            collide(xPos, yPos, tileType);
         }
         else
         {
@@ -224,5 +295,25 @@ public class Board {
 
         //return the score
         return difficulty * (totalNumEnemy - curNumEnemy);
+    }
+
+    public void getBoardState(Bundle savedInstanceState)
+    {
+        for (int x = 0; x < 7; x++)
+        {
+            board[x] = savedInstanceState.getIntArray("boardArray" + String.valueOf(x));
+            lastFrameTime[x] = savedInstanceState.getLongArray("lastFrame" + String.valueOf(x));
+        }
+        totalNumEnemy = savedInstanceState.getInt("tilesGenerated");
+    }
+
+    public void saveBoard(Bundle outState)
+    {
+        for (int x = 0; x < 7; x++)
+        {
+            outState.putIntArray("boardArray" + String.valueOf(x), board[x]);
+            outState.putLongArray("LastFrame" + String.valueOf(x), lastFrameTime[x]);
+        }
+        outState.putInt("tilesGenerated", totalNumEnemy);
     }
 }
