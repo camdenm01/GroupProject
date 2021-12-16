@@ -53,8 +53,9 @@ public class GameActivity extends AppCompatActivity {
 
         runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null && active)
         {
+            Log.v("onCreate: ", "saved instance happening");
             runGame.getGameState(savedInstanceState);
         }
     }
@@ -77,7 +78,12 @@ public class GameActivity extends AppCompatActivity {
         runGame.engineMusicStop();
         active = false; //this activity should no longer be active
 
-
+        runGame.endGame();
+        try {
+            gameThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
