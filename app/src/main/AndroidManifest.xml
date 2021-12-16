@@ -33,9 +33,10 @@
             android:label="Settings" />
         <activity
             android:name=".GameActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="fullSensor"
             android:label="@string/game_title" />
+        <!--android:screenOrientation="portrait"-->
 
         <meta-data
             android:name="preloaded_fonts"
