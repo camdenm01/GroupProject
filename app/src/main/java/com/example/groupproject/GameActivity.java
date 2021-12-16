@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -22,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     static boolean active; //used to check if this activity is active
     private EngineToUI runGame;
+    private Thread gameThread;
 
     /**private GameEngine gameEngine;**/
 
@@ -45,8 +48,15 @@ public class GameActivity extends AppCompatActivity {
         }
         else if (selectedDifficulty == "hard") {
             backgroundView.setImageResource(R.drawable.background_hard);
+
         }
 
+        runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
+
+        if (savedInstanceState != null)
+        {
+            runGame.getGameState(savedInstanceState);
+        }
     }
 
     @Override
@@ -57,9 +67,8 @@ public class GameActivity extends AppCompatActivity {
         //set up game and run
         SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
         String selectedDifficulty = sharedPreferences.getString("difficulty", "");
-        runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
-        Thread thread = new Thread(runGame);
-        thread.start();
+        gameThread = new Thread(runGame);
+        gameThread.start();
     }
 
     @Override
@@ -69,6 +78,19 @@ public class GameActivity extends AppCompatActivity {
         active = false; //this activity should no longer be active
 
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        runGame.endGame();
+        try {
+            gameThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        runGame.saveGameState(outState);
     }
 
     /**hides the title bar when the user is playing the game**/
@@ -87,6 +109,5 @@ public class GameActivity extends AppCompatActivity {
             transaction.replace(R.id.game_over_fragment_container, gameOverFragment);
             transaction.commit();
         }
-
     }
 }

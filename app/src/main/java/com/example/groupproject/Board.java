@@ -1,5 +1,6 @@
 package com.example.groupproject;
 
+import android.os.Bundle;
 import android.util.Log;
 
 import java.util.Random;
@@ -251,5 +252,23 @@ public class Board {
 
         //return the score
         return difficulty * (totalNumEnemy - curNumEnemy);
+    }
+
+    public void getBoardState(Bundle savedInstanceState)
+    {
+        for (int x = 0; x < 7; x++)
+        {
+            board[x] = savedInstanceState.getIntArray("boardArray" + String.valueOf(x));
+        }
+        totalNumEnemy = savedInstanceState.getInt("tilesGenerated");
+    }
+
+    public void saveBoard(Bundle outState)
+    {
+        for (int x = 0; x < 7; x++)
+        {
+            outState.putIntArray("boardArray" + String.valueOf(x), board[x]);
+        }
+        outState.putInt("tilesGenerated", totalNumEnemy);
     }
 }

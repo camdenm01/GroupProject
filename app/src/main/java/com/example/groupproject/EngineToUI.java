@@ -29,6 +29,21 @@ public class EngineToUI implements Runnable
         game.stopMusic();
     }
 
+    public void endGame()
+    {
+        game.engineEndGame();
+    }
+
+    public void getGameState(Bundle savedInstanceState)
+    {
+        game.getState(savedInstanceState);
+    }
+
+    public void saveGameState(Bundle outState)
+    {
+        game.saveGame(outState);
+    }
+
     @Override
     public void run() {
         //start the game loop

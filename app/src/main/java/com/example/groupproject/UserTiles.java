@@ -1,5 +1,7 @@
 package com.example.groupproject;
 
+import android.os.Bundle;
+
 import java.util.Random;
 
 /**
@@ -105,6 +107,16 @@ public class UserTiles {
     public void setTile(int selectedIndex, int tileNum)
     {
         storedTiles[selectedIndex] = tileNum;
+    }
+
+    public void getUserTileState(Bundle savedInstanceState)
+    {
+        storedTiles = savedInstanceState.getIntArray("userTileArray");
+    }
+
+    public void saveUserTile(Bundle outState)
+    {
+        outState.putIntArray("userTileArray", storedTiles);
     }
 
     /**
