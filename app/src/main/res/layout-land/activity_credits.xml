@@ -23,7 +23,7 @@
         android:shadowRadius="20"
         android:text="@string/credits_id"
         android:textColor="#FFFFFF"
-        android:textSize="48sp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
     <TextView
