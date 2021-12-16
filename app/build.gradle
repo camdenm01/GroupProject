@@ -21,6 +21,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        /**Renaming apk**/
+        applicationVariants.all{
+            variant -> variant.outputs.each{
+                output ->
+                    def name = "Tiletris.apk"
+                    output.outputFileName = name
+            }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
