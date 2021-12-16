@@ -34,5 +34,7 @@
     <string name="user3">Godwin Bime</string>
     <string name="user4">Mangsa Limbu Pheudin</string>
     <string name="user5">Timothy Haag</string>
+    <string name="game_over">Game Over</string>
+    <string name="leaderboard">Leaderboard</string>
 
 </resources>
