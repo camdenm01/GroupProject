@@ -22,7 +22,7 @@
         android:shadowDy="1"
         android:shadowRadius="4"
         android:text="Leaderboard"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:cornerRadius="@dimen/button_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
