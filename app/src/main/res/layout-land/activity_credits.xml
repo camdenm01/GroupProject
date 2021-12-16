@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/main_page"
+    android:background="@drawable/parchment"
     tools:context=".CreditsActivity">
 
     <TextView
@@ -13,13 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg1"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Credits"
-        android:textColor="#000000"
-        android:textSize="40sp"
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/credits_id"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -27,14 +31,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg2"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Jacob Kessinger"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="italic" />
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/user1"
+        android:textColor="#F4EFEF"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView7"
@@ -43,12 +50,15 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg3"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Camden Morgan"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="italic" />
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/user2"
+        android:textColor="#FBFBFB"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -57,12 +67,15 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg4"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Godwin Bime"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="italic" />
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/user3"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView9"
@@ -71,12 +84,15 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg5"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Mangsa Limbu Pheudin"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="italic" />
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/user4"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -85,10 +101,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="@color/credits_bg6"
+        android:fontFamily="@font/press_start_2p"
         android:gravity="center_horizontal"
-        android:text="Timothy Haag"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="italic" />
+        android:shadowColor="#000000"
+        android:shadowDx="20"
+        android:shadowDy="10"
+        android:shadowRadius="20"
+        android:text="@string/user5"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 </LinearLayout>
