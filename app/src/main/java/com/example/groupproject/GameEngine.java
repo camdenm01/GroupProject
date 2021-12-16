@@ -3,6 +3,8 @@ package com.example.groupproject;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -234,6 +236,16 @@ public class GameEngine {
                 //update time since last frame
                 lastFrame = System.currentTimeMillis();
             }
+
+            if (playingBoard.destroyToEmpty(timeToWait))
+            {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        drawBoard();
+                    }
+                });
+            }
         }
         if (!needEnd)
         {
@@ -272,6 +284,9 @@ public class GameEngine {
             {
                 switch (playingBoard.getTile(x + 1, y))
                 {
+                    case -2:
+                        imageTiles[x][y].setImageResource(R.drawable.destroyedtile);
+                        break;
                     case -1:
                         imageTiles[x][y].setImageResource(R.drawable.emptytile);
                         break;
@@ -304,6 +319,9 @@ public class GameEngine {
             {
                 switch (playingBoard.getTile(x + 4, y))
                 {
+                    case -2:
+                        playerSpaces[x][y].setImageResource(R.drawable.destroyedtile);
+                        break;
                     case -1:
                         playerSpaces[x][y].setImageResource(R.drawable.emptytile);
                         break;
@@ -341,6 +359,9 @@ public class GameEngine {
         {
             switch (table.getTile(x))
             {
+                case -2:
+                    userTiles[x].setImageResource(R.drawable.destroyedtile);
+                    break;
                 case -1:
                     userTiles[x].setImageResource(R.drawable.emptytile);
                     break;
