@@ -2,10 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_medium" />
 
     <ImageButton
         android:id="@+id/tilePButton3"
@@ -107,9 +119,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/default_score"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -119,9 +137,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:gravity="center_horizontal"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/default_highScore"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,8 +155,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/userTile_name"
-        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tileIButton52" />
@@ -360,6 +390,8 @@
         android:layout_height="match_parent"
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
