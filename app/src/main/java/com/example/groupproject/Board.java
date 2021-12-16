@@ -301,6 +301,7 @@ public class Board {
     {
         for (int x = 0; x < 7; x++)
         {
+            Log.e("Board Class: ", "getting board");
             board[x] = savedInstanceState.getIntArray("boardArray" + String.valueOf(x));
             lastFrameTime[x] = savedInstanceState.getLongArray("lastFrame" + String.valueOf(x));
         }
@@ -311,8 +312,9 @@ public class Board {
     {
         for (int x = 0; x < 7; x++)
         {
+            Log.e("Board Class: ", "saving board");
             outState.putIntArray("boardArray" + String.valueOf(x), board[x]);
-            outState.putLongArray("LastFrame" + String.valueOf(x), lastFrameTime[x]);
+            outState.putLongArray("lastFrame" + String.valueOf(x), lastFrameTime[x]);
         }
         outState.putInt("tilesGenerated", totalNumEnemy);
     }

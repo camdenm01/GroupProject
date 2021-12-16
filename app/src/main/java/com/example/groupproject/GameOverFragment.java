@@ -65,15 +65,13 @@ public class GameOverFragment extends Fragment{
 
         //replay button reloads gameactivity
         replayButton.setOnClickListener(view -> {
-            //startActivity(new Intent(getActivity(), GameActivity.class));
-            //getActivity().finish(); //remove current Game from the stack
+            ((GameActivity) getActivity()).isNotActive();
             getActivity().recreate();
             getParentFragmentManager().beginTransaction().remove(GameOverFragment.this).commit();
         });
 
         //menu button loads back to menu
         menuButton.setOnClickListener(view -> {
-            //startActivity(new Intent(getActivity(), MainActivity.class));
             getActivity().finish(); //remove current game from the stack
         });
 
