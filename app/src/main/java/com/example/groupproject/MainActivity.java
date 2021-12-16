@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,9 +22,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.games.AchievementsClient;
+import com.google.android.gms.games.AnnotatedData;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.LeaderboardsClient;
+import com.google.android.gms.games.leaderboard.Leaderboard;
+import com.google.android.gms.games.leaderboard.LeaderboardScore;
+import com.google.android.gms.games.leaderboard.LeaderboardVariant;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -132,8 +135,28 @@ public class MainActivity extends AppCompatActivity {
             leaderboardClient
                     .getAllLeaderboardsIntent()
                     .addOnSuccessListener(intent -> startActivityForResult(intent, 1));
+            retrieveScore();
         }
 
+    }
+
+    private void retrieveScore(){
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        leaderboardClient.loadCurrentPlayerLeaderboardScore(getString(R.string.leaderboard_high_score), LeaderboardVariant.TIME_SPAN_ALL_TIME, LeaderboardVariant.COLLECTION_PUBLIC)
+                .addOnSuccessListener(this, new OnSuccessListener<AnnotatedData<LeaderboardScore>>() {
+                    @Override
+                    public void onSuccess(@NonNull AnnotatedData<LeaderboardScore> leaderboardScoreAnnotatedData) {
+                        long leaderboardScore;
+                        int score;
+                        if(leaderboardScoreAnnotatedData.get() != null){
+                            leaderboardScore = leaderboardScoreAnnotatedData.get().getRawScore();
+                            score = (int) leaderboardScore;
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putInt("highScore", score);
+                            editor.apply();
+                        }
+                    }
+                });
     }
 
 
@@ -147,8 +170,14 @@ public class MainActivity extends AppCompatActivity {
                 GoogleSignInAccount signedInAccount = result.getSignInAccount();
                 leaderboardClient = Games.getLeaderboardsClient(this, signedInAccount);
                 String success = getString(R.string.logged_in_success);
-                new AlertDialog.Builder(this).setMessage(success)
-                        .setNeutralButton(android.R.string.ok, null).show();
+                AlertDialog.Builder alert = new AlertDialog.Builder(this).setMessage(success)
+                        .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                showLeaderboard();
+                            }
+                        });
+                alert.show();
             } else {
                 String message = result.getStatus().getStatusMessage();
                 if (message == null || message.isEmpty()) {
