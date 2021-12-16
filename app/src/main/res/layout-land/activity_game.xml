@@ -2,10 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_game_land"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_medium" />
 
     <ImageButton
         android:id="@+id/tilePButton2"
@@ -112,8 +123,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/default_score"
-        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -125,8 +141,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/default_highScore"
-        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreTxt" />
@@ -135,10 +156,15 @@
         android:id="@+id/textView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:background="#80FFFFFF"
+        android:fontFamily="@font/press_start_2p"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
         android:text="@string/userTile_name"
-        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/highScoreTxt" />
 

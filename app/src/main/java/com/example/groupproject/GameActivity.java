@@ -1,6 +1,7 @@
 package com.example.groupproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -20,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     static boolean active; //used to check if this activity is active
     private EngineToUI runGame;
+
     /**private GameEngine gameEngine;**/
 
     @Override
@@ -27,16 +30,23 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         hideTitleBar();
         setContentView(R.layout.activity_game);
-    }
+        ImageView backgroundView = (ImageView) findViewById(R.id.background_image);
 
-    @Override
-    public void onConfigurationChanged(Configuration configuration){
-        super.onConfigurationChanged(configuration);
-        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            Log.i("Orientation: ", "Landscape");
-        }else if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Log.i("Orientation: ", "Portrait");
+        SharedPreferences sharedPreferences = getSharedPreferences("SharedPrefs", MODE_PRIVATE);
+        String selectedDifficulty = sharedPreferences.getString("difficulty", "");
+
+        if (selectedDifficulty == "easy") {
+            backgroundView.setImageResource(R.drawable.background_easy);
+
         }
+        else if (selectedDifficulty == "medium") {
+            backgroundView.setImageResource(R.drawable.background_medium);
+
+        }
+        else if (selectedDifficulty == "hard") {
+            backgroundView.setImageResource(R.drawable.background_hard);
+        }
+
     }
 
     @Override
