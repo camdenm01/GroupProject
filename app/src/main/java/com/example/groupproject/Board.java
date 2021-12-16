@@ -65,7 +65,9 @@ public class Board {
                 if (board[x][y] > 0 && board[x - 1][y] == 0)
                 {
                     //we call collide
-                    collide(x, y, board[x][y], 1);
+                    //collide(x, y, board[x][y], 1);
+                    board[x][y] = board[x][y] + 5;
+                    board[x - 1][y] = -1;
                 }
 
                 //if we need to move an enemy tile down, we do
@@ -78,6 +80,31 @@ public class Board {
                 }
             }
         }
+
+        //we'll resolve any collisions of the bombs
+        for (int x = 6; x > 0; x--)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                //if an enemy tile would hit a player tile
+                if (board[x][y] == 10) {
+                    collide(x, y,  5);
+                }
+            }
+        }
+
+        //we'll resolve the rest of the collisions
+        for (int x = 6; x > 0; x--)
+        {
+            for (int y = 0; y < 5; y++)
+            {
+                //if an enemy tile would hit a player tile
+                if (board[x][y] > 5) {
+                    collide(x, y, board[x][y] - 5);
+                }
+            }
+        }
+
         //we'll check if the player loses
         for (int x = 0; x < 5; x++)
         {
@@ -100,19 +127,19 @@ public class Board {
      * see CSC415_groupProject for different file effects
      * after effects, tile at xPos, yPos should be empty
      */
-    public void collide(int xPos, int yPos, int curTile, int xPosMod)
+    public void collide(int xPos, int yPos, int curTile)
     {
         //empty both tiles
         board[xPos][yPos] = -1;
-        board[xPos - xPosMod][yPos] = -1;
+        //board[xPos - xPosMod][yPos] = -1;
 
         //now we have a different effect for each player tile
         switch (curTile)
         {
             case 1:
                 //as a sword, empty two tiles
-                board[xPos - 1 - xPosMod][yPos] = -1;
-                board[xPos - 2 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -1;
+                board[xPos - 2 ][yPos] = -1;
                 break;
             case 2:
                 //as a great-sword, eliminate all tiles in a vertical role
@@ -125,51 +152,51 @@ public class Board {
                 //as twin-axes, eliminate all tile in two lines offset from center
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
-                    board[xPos - 2 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -1;
+                    board[xPos - 2 ][yPos - 1] = -1;
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
-                    board[xPos - 2 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -1;
+                    board[xPos - 2 ][yPos + 1] = -1;
                 }
 
                 break;
             case 4:
                 //twin daggers, destroy one tile ahead and diagonal tiles (cone
-                board[xPos - 1 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -1;
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -1;
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -1;
                 }
                 break;
             case 5:
                 //as a bomb, destroy all surrounding tiles
                 if (yPos > 0)
                 {
-                    board[xPos - 1 - xPosMod][yPos - 1] = -1;
-                    board[xPos - xPosMod][yPos - 1] = -1;
-                    if (xPos - xPosMod + 1 < 7) {
-                        board[xPos + 1 - xPosMod][yPos - 1] = -1;
+                    board[xPos - 1 ][yPos - 1] = -1;
+                    board[xPos ][yPos - 1] = -1;
+                    if (xPos  + 1 < 7) {
+                        board[xPos + 1 ][yPos - 1] = -1;
                     }
                 }
                 if (yPos < 4)
                 {
-                    board[xPos - 1 - xPosMod][yPos + 1] = -1;
-                    board[xPos - xPosMod][yPos + 1] = -1;
-                    if (xPos - xPosMod + 1 < 7) {
-                        board[xPos + 1 - xPosMod][yPos + 1] = -1;
+                    board[xPos - 1 ][yPos + 1] = -1;
+                    board[xPos ][yPos + 1] = -1;
+                    if (xPos  + 1 < 7) {
+                        board[xPos + 1 ][yPos + 1] = -1;
                     }
                 }
-                if (xPos - xPosMod + 1 <= 6)
+                if (xPos  + 1 <= 6)
                 {
-                    board[xPos + 1 - xPosMod][yPos] = -1;
+                    board[xPos + 1 ][yPos] = -1;
                 }
-                board[xPos - 1 - xPosMod][yPos] = -1;
+                board[xPos - 1 ][yPos] = -1;
                 break;
         }
     }
@@ -186,7 +213,7 @@ public class Board {
     {
         if (board[xPos][yPos] == 0)
         {
-            collide(xPos, yPos, tileType, 0);
+            collide(xPos, yPos, tileType);
         }
         else
         {
