@@ -420,6 +420,9 @@ public class GameEngine {
                 drawScore();
             }
         });
+
+        //
+        isGameOver = savedInstanceState.getBoolean("gameOverCheck");
     }
 
     /**
@@ -431,6 +434,8 @@ public class GameEngine {
         playingBoard.saveBoard(outState);
         table.saveUserTile(outState);
         mTile.saveMovingTile(outState);
+
+        outState.putBoolean("gameOverCheck", isGameOver);
     }
 
     /**
