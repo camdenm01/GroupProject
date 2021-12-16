@@ -22,7 +22,11 @@
                             Tiles can only be placed in the bottom 2 rows.</string>
     <string name="sword_text">The Sword tile destroys any enemy tiles in the two squares above the collision.</string>
     <string name="greatsword_text">The Great Sword tile destroys all enemy tiles above the collision.</string>
-    <string name="dagger_text">The Dagger tile destroys enemy tiles that are up and to the right and left as well as right above the collision.</string>
-    <string name="bishop_text">The Axe tile destroys enemy tiles that are up and to the right and left of the collision and the tiles above those.</string>
-    <string name="bomb_text">The Bomb tile destroys all enemy tiles around it.</string>
+    <string name="dagger_text">The Dagger tile destroys each enemy tile that are diagonally above the placed position. It will also destroy an enemy tile on collision.</string>
+    <string name="bishop_text">The Bishop tile destroys each enemy tile that are diagonally above the placed position. It will destroy one enemy tile above the diagonal tiles and it will also destroy an enemy tile on collision.</string>
+    <string name="bomb_text">The Bomb tile destroys all adjacent enemy tiles around it.</string>
+    <string name="connection_error">Can\'t Log In to Play Services. Select an account, or check your connection and try again.</string>
+    <string name="not_logged_in_error">You must log in to Google Play to view the leaderboard. Press OK to log in </string>
+    <string name="logged_in_success">You have been logged in successfully! You can now access the leaderboard</string>
+
 </resources>

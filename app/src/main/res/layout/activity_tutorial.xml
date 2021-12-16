@@ -75,7 +75,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="80dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/greatsword_image"
                 app:srcCompat="@drawable/daggertile" />
@@ -85,7 +85,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="140dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dagger_image"
                 app:srcCompat="@drawable/axetile" />
@@ -95,7 +95,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="110dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bishop_image"
                 app:srcCompat="@drawable/bombtile" />
