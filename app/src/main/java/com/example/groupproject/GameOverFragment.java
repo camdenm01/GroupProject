@@ -65,6 +65,7 @@ public class GameOverFragment extends Fragment{
 
         //replay button reloads gameactivity
         replayButton.setOnClickListener(view -> {
+            ((GameActivity) getActivity()).isNotActive();
             getActivity().recreate();
             getParentFragmentManager().beginTransaction().remove(GameOverFragment.this).commit();
         });

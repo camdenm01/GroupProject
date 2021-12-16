@@ -26,7 +26,9 @@ public class GameActivity extends AppCompatActivity {
     private EngineToUI runGame;
     private Thread gameThread;
 
-    /**private GameEngine gameEngine;**/
+    /**
+     * private GameEngine gameEngine;
+     **/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +43,17 @@ public class GameActivity extends AppCompatActivity {
         if (selectedDifficulty == "easy") {
             backgroundView.setImageResource(R.drawable.background_easy);
 
-        }
-        else if (selectedDifficulty == "medium") {
+        } else if (selectedDifficulty == "medium") {
             backgroundView.setImageResource(R.drawable.background_medium);
 
-        }
-        else if (selectedDifficulty == "hard") {
+        } else if (selectedDifficulty == "hard") {
             backgroundView.setImageResource(R.drawable.background_hard);
 
         }
 
         runGame = new EngineToUI(this, this.findViewById(R.id.scoreTxt), this.findViewById(R.id.highScoreTxt), "SharedPrefs");
 
-        if (savedInstanceState != null && active)
-        {
+        if (savedInstanceState != null && active) {
             Log.v("onCreate: ", "saved instance happening");
             runGame.getGameState(savedInstanceState);
         }
@@ -76,7 +75,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         runGame.engineMusicStop();
-        active = false; //this activity should no longer be active
+        //active = false; //this activity should no longer be active
 
         runGame.endGame();
         try {
@@ -99,11 +98,18 @@ public class GameActivity extends AppCompatActivity {
         runGame.saveGameState(outState);
     }
 
-    /**hides the title bar when the user is playing the game**/
-    private void hideTitleBar(){
+    /**
+     * hides the title bar when the user is playing the game
+     **/
+    private void hideTitleBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.SOFT_INPUT_MASK_ADJUST);
+    }
+
+    public void isNotActive()
+    {
+        active = false;
     }
 
     protected void displayGameOver(int currentScore, int highScore){
